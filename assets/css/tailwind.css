@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply bg-customgreen px-2 py-1 rounded;
+  }
+  .mcqcard{
+    @apply p-10 rounded-md bg-lime shadow-md h-full;
+  }
+  .card{
+    @apply p-10 rounded-md bg-white shadow-md h-full;
+  }
+}
