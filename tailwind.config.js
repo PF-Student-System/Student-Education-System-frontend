@@ -8,7 +8,9 @@ export default {
       customgraytext: "#B2BAC6",
       customgrayheading: "#535966",
       white : "#FFFFFF",
-      lime : "#d9f99d",
+      lime : "#86efac",
+      lightcustomgreen : "#a4e0c5"
+
     },
   },
   plugins: [],
