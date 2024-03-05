@@ -1,6 +1,10 @@
 <template>
-  <div class="text-center">
+  <!-- <div class="text-center">
     <NuxtLink class="btn" to="/dashboard/student">students</NuxtLink>
   </div>
-  <NuxtPage />
+  <NuxtPage /> -->
+  <div class="flex gap-x-10">
+    <dashboardSidebar />
+    <NuxtPage />
+  </div>
 </template>
