@@ -9,10 +9,10 @@
   .btnHover {
     @apply bg-white text-customgreen border-2 border-customgreen;
   }
-  .mcqcard{
+  .mcqcard {
     @apply p-10 rounded-md bg-lime shadow-md h-full;
   }
-  .card{
+  .card {
     @apply p-10 rounded-md bg-white shadow-md h-full;
   }
 }
