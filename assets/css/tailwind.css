@@ -10,9 +10,9 @@
     @apply bg-white text-customgreen border-2 border-customgreen;
   }
   .mcqcard{
-    @apply p-10 rounded-md bg-lime shadow-md h-full;
+    @apply p-10 rounded-md bg-lightcustomgreen  shadow-md h-full;
   }
   .card{
-    @apply p-10 rounded-md bg-white shadow-md h-full;
+    @apply p-10 rounded-md bg-white h-full;
   }
 }
