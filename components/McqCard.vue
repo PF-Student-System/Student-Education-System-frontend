@@ -1,5 +1,6 @@
 <template>
-    <div class="mcqcard bg-green-100">
+    <div class="mcqcard">
+      <div class="flex items-center text-customgreen font-semibold mb-2">Question no - {{ questionIndex+1 }}</div>  
       <p class="text-xl font-bold " style="color: #535966;">{{ questions.questionText }}</p>
       <ul>
         <li v-for="(option, optionIndex) in questions.options" :key="optionIndex" class="mt-2">
@@ -7,6 +8,12 @@
           <label :for="`option_${optionIndex}`" class="mt-2">{{ option }}</label>
         </li>
       </ul>
+      <div>
+        <div class="float-right flex text-xl font-semibold text-customgrayheading">
+         <i class="material-icons text-customgreen">flag</i> - 1 Mark 
+        </div>
+      </div>
+      
     </div>
 </template>
 
@@ -16,7 +23,6 @@
     const selectedOptionIndex = ref<number | null>(null);
 
     const handleOptionSelect = (optionIndex: number) => {
-      selectedOptionIndex.value.push(optionIndex);
       console.log('-------->',selectedOptionIndex)
     };
 </script>
