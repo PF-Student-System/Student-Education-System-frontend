@@ -1,3 +1,4 @@
+import actionmodal from '~/components/actionmodal.vue';
 <template>
   <div class="container">
     <h1 class="text-2xl text-customblue font-semibold mt-5">Teachers</h1>
@@ -17,7 +18,9 @@
             <img class="w-8" src="/public/Sample_User_Icon.png" />
           </td>
           <td class="p-2">30 minutes ago</td>
-          <td class="p-2"><button class="text-xl">▶</button></td>
+          <td class="p-2">
+            <actionmodal />
+          </td>
         </tr>
         <tr>
           <td class="p-2">Student 2</td>
@@ -25,7 +28,7 @@
             <img class="w-8" src="/public/Sample_User_Icon.png" />
           </td>
           <td class="p-2">1 hour ago</td>
-          <td class="p-2"><button class="text-xl">▶</button></td>
+          <td class="p-2"><actionmodal /></td>
         </tr>
         <tr>
           <td class="p-2">Student 3</td>
@@ -33,7 +36,7 @@
             <img class="w-8" src="/public/Sample_User_Icon.png" />
           </td>
           <td class="p-2">24 hours ago</td>
-          <td class="p-2"><button class="text-xl">▶</button></td>
+          <td class="p-2"><actionmodal /></td>
         </tr>
         <tr>
           <td class="p-2">Student 4</td>
@@ -41,7 +44,7 @@
             <img class="w-8" src="/public/Sample_User_Icon.png" />
           </td>
           <td class="p-2">jan-29-30 11:00</td>
-          <td class="p-2"><button class="text-xl">▶</button></td>
+          <td class="p-2"><actionmodal /></td>
         </tr>
         <tr>
           <td class="p-2">Student 5</td>
@@ -49,7 +52,7 @@
             <img class="w-8" src="/public/Sample_User_Icon.png" />
           </td>
           <td class="p-2">jan-28-23 03:00</td>
-          <td class="p-2"><button class="text-xl">▶</button></td>
+          <td class="p-2"><actionmodal /></td>
         </tr>
       </tbody>
     </table>
