@@ -10,6 +10,7 @@ export default {
       white : "#FFFFFF",
       lime : "#86efac",
       lightcustomgreen : "#a4e0c5"
+
     },
   },
   plugins: [],
