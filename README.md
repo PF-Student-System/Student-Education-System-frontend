@@ -4,4 +4,4 @@ Hello Mashood Bhaiiiiiiiiiiiiii.................................................
 hello Mashood bhaiiiiiiiiiiiii ................................ aik wari fer ...............................:)
 
 hello Mashood bhaiiiiiiiiiiiii ................................ duji wari fer ...............................:)
-hello Mashood bhaiiiiiiiiiiiii ................................ teeji wari fer ..............................:)
+hello Mashood bhaiiiiiiiiiiiii ................................ teeji wari fer ...............................:)
