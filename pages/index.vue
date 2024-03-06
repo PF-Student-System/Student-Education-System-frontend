@@ -3,4 +3,3 @@
     <button class="btn bg-customblue text-white">Sign in</button>
   </div>
 </template>
-
