@@ -5,11 +5,12 @@
         :class="{
           'w-36 bg-customgreen h-12 m-2 flex items-center justify-center text-white cursor-pointer':
             !disabled && !box.checked,
-          'bg-blue-500 text-black': box.checked,
+          'bg-blue-500 text-blue w-36 h-12 m-2 flex items-center justify-center cursor-pointer':
+            box.checked,
           'opacity-50 cursor-not-allowed': disabled,
+          selected: box.selected,
         }"
         @click="boxClicked(box)"
-        :disabled="disabled"
       >
         {{ box.id }}
       </div>
@@ -24,10 +25,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-
 const boxes = ref([]);
 const disabled = ref(true);
+const counter = ref(0);
 
 onMounted(() => {
   createBoxes();
@@ -35,18 +35,33 @@ onMounted(() => {
 
 function createBoxes() {
   for (let i = 0; i < 49; i++) {
-    boxes.value.push({ id: i, checked: false });
+    boxes.value.push({ id: i, checked: false, selected: false });
   }
+  console.log(boxes);
 }
 
-function startClicked(id) {
+function startClicked() {
   disabled.value = false;
 }
 
-function boxClicked(id) {
+function boxClicked(box) {
   if (disabled.value) return;
-  box.checked = !box.checked;
+  if (!box.checked) {
+    counter.value++;
+  }
+  box.checked = true;
+  console.log(box.checked);
+  box.selected = true;
+
+  if (counter.value === 49) {
+    console.log("logic working");
+    navigateTo("/");
+  }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.selected {
+  background-color: #0f172a;
+}
+</style>
