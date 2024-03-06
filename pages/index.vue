@@ -1,30 +1,37 @@
-<template>
-  <div class="text-center mt-36 font-bold text-2xl">
-    <h1>Sign In</h1>
-    <div style="border: 2px solid black; width:400px; height: 400px;">
-      <video ref="player" controls autoplay></video>
-    </div>
-    <div>
-      <button class="btn" @click="captureImage">Capture</button>
-    </div>
-    <canvas ref="canvas" width="500" height="400"></canvas>
-  </div>
-  <div>
-    <button class="btn">Sign in</button>
-  </div>
+<template >
+  <div style="border: 2px solid black; width: 1000px; height: 510px; margin:auto; background-color:aquamarine">
+    <h1 style="text-align: center;">Sign In Page</h1>
+      <div style="border: 2px solid black; display: flex; justify-content:center; align-items: center; height: 400px; ">
+        <!-- only show video if not Captured -->
+        <video ref="player"  autoplay v-if="!captured.value" style="height: 400px; width: 400px;" ></video>
+        
+      </div>
+      <div>
+        <button class="btn" @click="captureImage" v-if="!captured.value" >SignIn</button>
+        <!-- <button class="btn" @click="gotoSignuppage"  >SignUp</button> -->
+        <NuxtLink to="/Signup" class="btn">SignUp</NuxtLink>
+      </div>
+     
+      <div>
+        <!-- To show the captured image we use canvas  -->
+        <canvas  ref="canvas" width="400" height="400" v-if="!captured.value"  ></canvas>
+      </div>
+       
+    </div>    
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 
 const player = ref(null);
-const canvas = ref(null);
+const canvas = ref(null); // Use ref(null) to correctly initialize the canvas
+const captured = ref(false); // State to control the visibility of video/canvas
 
 const constraints = {
   video: {
     width: 1280,
-    height: 720
-  }
+    height: 720,
+  },
 };
 
 async function initCamera() {
@@ -38,15 +45,23 @@ async function initCamera() {
   }
 }
 
-function captureImage() {
-  if (player.value && canvas.value) {
+ function captureImage() {
+  if (player.value && canvas.value ) {
     const context = canvas.value.getContext('2d');
     context.drawImage(player.value, 0, 0, canvas.value.width, canvas.value.height);
-    player.srcObject.getVideoTracks().forEach(track => track.stop());
-  }
+    
+    captured.value = true;
+     // Stop video tracks
+  player.value.srcObject.getVideoTracks().forEach((track) => track.stop());
+  //console.log(canvas.value,'canvas value')
+  console.log(context);
 }
-
+}
 onMounted(() => {
   initCamera();
 });
+
+
+
 </script>
+
