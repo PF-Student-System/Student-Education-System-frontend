@@ -1,3 +1,4 @@
+
 <template >
   <div style="border: 2px solid black; width: 1000px; height: 510px; margin:auto; background-color:aquamarine">
     <h1 style="text-align: center;">Sign In Page</h1>
@@ -19,4 +20,5 @@
        
     </div>    
 </template>
+
 
