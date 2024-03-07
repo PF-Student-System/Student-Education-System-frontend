@@ -1,1 +1,0 @@
-export { default } from "file:///C:/Users/HP/Desktop/Programmers%20Force/Project/Student-Education-System-frontend/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
