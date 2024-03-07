@@ -1,6 +1,17 @@
 <template>
-  <div class="text-center">
-    <h1>This is the default layout</h1>
+  <div>
+    <AppHeader />
+    <slot />
+    <AppFooter />
   </div>
-  <slot />
 </template>
+
+<script>
+export default {
+  // Your script logic here
+}
+</script>
+
+<style>
+/* Your styles here */
+</style>
