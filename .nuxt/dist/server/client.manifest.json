@@ -7,12 +7,12 @@
     "module": true,
     "resourceType": "script"
   },
-  "C:/Users/Haier/Desktop/Programmer force Tasks/Nuxt.js/Student-Education-System-frontend/node_modules/nuxt/dist/app/entry.js": {
+  "D:/Programmer Force Training/nuxt/Student-Education-System-frontend/node_modules/nuxt/dist/app/entry.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
     "isEntry": true,
-    "file": "C:/Users/Haier/Desktop/Programmer force Tasks/Nuxt.js/Student-Education-System-frontend/node_modules/nuxt/dist/app/entry.js"
+    "file": "C:/Users/HP/Desktop/Programmers Force/Project/Student-Education-System-frontend/node_modules/nuxt/dist/app/entry.js"
   }
 }

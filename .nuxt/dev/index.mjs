@@ -744,11 +744,13 @@ const errorHandler = (async function errorhandler(error, event) {
   return send(event, html);
 });
 
+const _lazy_X9HcCA = () => Promise.resolve().then(function () { return renderer$1; });
 const _lazy_oVOXNh = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '/__nuxt_error', handler: _lazy_oVOXNh, lazy: true, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_oVOXNh, lazy: true, middleware: false, method: undefined }
+  { route: '/__nuxt_error', handler: _lazy_X9HcCA, lazy: true, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_X9HcCA, lazy: true, middleware: false, method: undefined }
+
 ];
 
 function createNitroApp() {
@@ -1034,8 +1036,8 @@ function publicAssetsURL(...path) {
 
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
-const getClientManifest = () => import('file://C:/Users/Haier/Desktop/Programmer%20force%20Tasks/Nuxt.js/Student-Education-System-frontend/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
-const getServerEntry = () => import('file://C:/Users/Haier/Desktop/Programmer%20force%20Tasks/Nuxt.js/Student-Education-System-frontend/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
+const getClientManifest = () => import('file://C:/Users/HP/Desktop/Programmers%20Force/Project/Student-Education-System-frontend/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getServerEntry = () => import('file://C:/Users/HP/Desktop/Programmers%20Force/Project/Student-Education-System-frontend/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
 const getSSRRenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();
   if (!manifest) {
