@@ -1,22 +1,25 @@
 <template>
-  <div style="border: 2px solid black; display: flex; justify-content:center; align-items: center; height: 500px;">
-    <div style="border: 2px solid black; width: 700px; height: 500px; margin:auto;">
-      <h1>Signup Page step 2 out of 2</h1>
-        <div style="border: 2px solid black; display: flex; justify-content:center; align-items: center; height: 400px; ">
+  <!-- <div style=" display: flex; justify-content:center; align-items: center; height: 500px;"> -->
+   
+   <div class="bg-white py-4 ">
+    <h1 style="text-align:center" class="text-customgreen text-lg font-bold mr-4 mb-5">Capture Face</h1>
+    
+      
+        <div class="flex justify-center mb-5"    >
           <!-- only show video if not Captured -->
-          <video ref="player" autoplay v-if="!captured.value" style="height: 400px; width: 400px;" ></video>
+          <video ref="player" autoplay v-if="!captured.value" style="  border-radius: 10px;" ></video>
           
         </div>
-        <div>
-          <button class="btn" @click="captureImage" v-if="!captured.value" >SignUp</button>
+        <div class="flex justify-center">
+          <button class="btn hover:btnHover w-72 mt-2" @click="captureImage" v-if="!captured.value" >Capture</button>
         </div>
        
         <div>
           <!-- To show the captured image we use canvas  -->
-          <canvas  ref="canvas" width="400" height="400" v-if="!captured.value"  ></canvas>
+          <canvas  ref="canvas" width="400" height="600" v-if="!captured.value"  ></canvas>
         </div>
          
-      </div> 
+       
     </div>   
   </template>
   
@@ -29,8 +32,8 @@
   
   const constraints = {
     video: {
-      width: 1280,
-      height: 720,
+      width: 720,
+      height: 360,
     },
   };
   

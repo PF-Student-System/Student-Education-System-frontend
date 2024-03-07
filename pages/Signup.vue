@@ -1,21 +1,15 @@
 <template>
-    <div style="border: 2px solid black; display: flex;
-     justify-content:center; align-items: center; height: 500px;" >
-        <h3>SignUp</h3>
-        <h3>Step 1 out of 2</h3>
-        <form  >
-                     <div style="margin: auto; padding: auto;"> 
-                     <input type="text" v-model="user.firstname" placeholder="First Name" style="border: 1px solid black; margin-left: 80px; padding: 6px; border-radius: 5px;">
-                    </div>
-                    <br>
-                     <div>
-                     <input type="text" v-model="user.lastname" placeholder="Last Name" style="border: 1px solid black; margin-left: 80px; padding: 6px; border-radius: 5px;">
-                     </div>
-                     <NuxtLink to="/Signupimage" @click="steptwo" class="btn" >Next</NuxtLink>
-        </form>
-                        
-                       
-    </div>
+       
+        <div class=" mt-24 py-4 flex justify-center align-center">
+            <div class="p-10 rounded">
+                <h1 class=" text-center mb-5 text-2xl text-customgreen text-3xl font-semibold mb-10">Sign up</h1>
+                     <input type="text" v-model="user.firstname" placeholder="First Name" class="h-8 border rounded-md mb-3 px-2 w-72" ><br/>
+                 
+                     <input type="text" v-model="user.lastname" placeholder="Last Name" class="h-8 border rounded-md  px-2 w-72 mb-5" >
+                     <br/>
+                     <NuxtLink to="/Signupimage" ><button @click="steptwo" class="bg-customgreen hover:btnHover rounded text-white h-8 w-full"  >Next</button></NuxtLink>
+            </div>
+         </div>  
 </template>
 <script  setup>
 import { reactive   } from 'vue';
