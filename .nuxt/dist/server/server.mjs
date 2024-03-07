@@ -1,1 +1,0 @@
-export { default } from "file:///C:/Users/Haier/Desktop/Programmer%20force%20Tasks/Nuxt.js/Student-Education-System-frontend/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
