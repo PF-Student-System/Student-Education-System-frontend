@@ -30,40 +30,91 @@
   </div>
 </template>
 
-<script setup>
-const boxes = ref([]);
-const disabled = ref(true);
-const counter = ref(0);
+<script lang="ts">
+// const boxes = ref([]);
+// const disabled = ref(true);
+// const counter = ref(0);
 
-onMounted(() => {
-  createBoxes();
-});
+// onMounted(() => {
+//   createBoxes();
+// });
 
-function createBoxes() {
-  for (let i = 0; i < 49; i++) {
-    boxes.value.push({ id: i, checked: false, selected: false });
-  }
-  console.log(boxes);
-}
+// function createBoxes() {
+//   for (let i = 0; i < 49; i++) {
+//     boxes.value.push({ id: i, checked: false, selected: false });
+//   }
+//   console.log(boxes);
+// }
 
-function startClicked() {
-  disabled.value = false;
-}
+// function startClicked() {
+//   disabled.value = false;
+// }
 
-function boxClicked(box) {
-  if (disabled.value) return;
-  if (!box.checked) {
-    counter.value++;
-  }
-  box.checked = true;
-  console.log(box.checked);
-  box.selected = true;
+// function boxClicked(box) {
+//   if (disabled.value) return;
+//   if (!box.checked) {
+//     counter.value++;
+//   }
+//   box.checked = true;
+//   console.log(box.checked);
+//   box.selected = true;
 
-  if (counter.value === 49) {
-    console.log("logic working");
-    navigateTo("/");
-  }
-}
+//   if (counter.value === 49) {
+//     console.log("logic working");
+//     navigateTo("/");
+//   }
+// }
+
+export default {
+  setup() {
+    interface Box {
+      id: number;
+      checked: boolean;
+      selected: boolean;
+    }
+
+    const boxes = ref<Box[]>([]);
+    const disabled = ref<boolean>(true);
+    const counter = ref<number>(0);
+
+    onMounted(() => {
+      createBoxes();
+    });
+
+    function createBoxes() {
+      for (let i = 0; i < 49; i++) {
+        boxes.value.push({ id: i, checked: false, selected: false });
+      }
+      console.log(boxes.value);
+    }
+
+    function startClicked() {
+      disabled.value = false;
+    }
+
+    function boxClicked(box: Box) {
+      if (disabled.value) return;
+      if (!box.checked) {
+        counter.value++;
+      }
+      box.checked = true;
+      console.log(box.checked);
+      box.selected = true;
+
+      if (counter.value === 49) {
+        navigateTo("/");
+      }
+    }
+
+    return {
+      boxes,
+      disabled,
+      counter,
+      startClicked,
+      boxClicked,
+    };
+  },
+};
 </script>
 
 <style scoped>
