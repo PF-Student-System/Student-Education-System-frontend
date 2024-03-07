@@ -1,1 +1,0 @@
-export { default } from "file:///F:/pfproject/nuxtcode/Student-Education-System-frontend/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
