@@ -7,7 +7,7 @@
       
         <div class="flex justify-center mb-5"    >
           <!-- only show video if not Captured -->
-          <video ref="player" autoplay v-if="!captured.value" style="  border-radius: 10px;" ></video>
+          <video class="shadow-xl" ref="player" autoplay v-if="!captured.value" style="  border-radius: 10px;" ></video>
           
         </div>
         <div class="flex justify-center">

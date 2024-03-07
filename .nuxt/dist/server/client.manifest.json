@@ -7,12 +7,12 @@
     "module": true,
     "resourceType": "script"
   },
-  "D:/Programmer Force Training/nuxt/Student-Education-System-frontend/node_modules/nuxt/dist/app/entry.js": {
+  "F:/pfproject/nuxtcode/Student-Education-System-frontend/node_modules/nuxt/dist/app/entry.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
     "isEntry": true,
-    "file": "D:/Programmer Force Training/nuxt/Student-Education-System-frontend/node_modules/nuxt/dist/app/entry.js"
+    "file": "F:/pfproject/nuxtcode/Student-Education-System-frontend/node_modules/nuxt/dist/app/entry.js"
   }
 }
