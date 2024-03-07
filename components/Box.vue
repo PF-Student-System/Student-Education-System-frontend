@@ -1,11 +1,15 @@
 <template>
   <div class="grid grid-cols-7 grid-rows-7">
-    <div v-for="box in boxes" :key="box.id">
+    <div
+      v-for="box in boxes"
+      :key="box.id"
+      class="flex justify-center pt-3 m-auto"
+    >
       <div
         :class="{
-          'w-36 bg-customgreen h-12 m-2 flex items-center justify-center text-white cursor-pointer':
+          'w-28 bg-customgreen h-12 m-2 flex items-center justify-center text-white cursor-pointer ':
             !disabled && !box.checked,
-          'bg-blue-500 text-blue w-36 h-12 m-2 flex items-center justify-center cursor-pointer':
+          'bg-blue-500 text-blue w-28 h-12 m-2 flex items-center justify-center cursor-pointer text-white':
             box.checked,
           'opacity-50 cursor-not-allowed': disabled,
           selected: box.selected,
@@ -16,11 +20,13 @@
       </div>
     </div>
   </div>
-  <div
-    class="btn w-24 h-12 m-2 text-center hover:btnHover cursor-pointer font-2xl font-semibold pt-3"
-    @click="startClicked"
-  >
-    Start
+  <div class="text-center pt-10">
+    <button
+      class="btn text-center w-[100px] hover:btnHover cursor-pointer font-2xl font-semibold"
+      @click="startClicked"
+    >
+      Start
+    </button>
   </div>
 </template>
 
