@@ -1,0 +1,202 @@
+{
+  "resolvedId": "G:/leanring_NUXTJS/Student-Education-System-frontend/pages/index.vue?macro=true",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\r\n",
+      "start": 1709784863966,
+      "end": 1709784864780,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709784864780,
+      "end": 1709784864780,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709784864780,
+      "end": 1709784864780,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709784864780,
+      "end": 1709784864780,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709784864780,
+      "end": 1709784864780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709784864780,
+      "end": 1709784864780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709784864780,
+      "end": 1709784864780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709784864780,
+      "end": 1709784864780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "[Error]",
+      "start": 1709784864780,
+      "end": 1709784864787,
+      "order": "normal",
+      "error": {
+        "message": "At least one <template> or <script> is required in a single file component.",
+        "stack": [
+          {
+            "functionName": "Object.parse$2 [as parse]",
+            "fileName": "G:\\leanring_NUXTJS\\Student-Education-System-frontend\\node_modules\\@vue\\compiler-sfc\\dist\\compiler-sfc.cjs.js",
+            "lineNumber": 1921,
+            "columnNumber": 7,
+            "source": "    at Object.parse$2 [as parse] (G:\\leanring_NUXTJS\\Student-Education-System-frontend\\node_modules\\@vue\\compiler-sfc\\dist\\compiler-sfc.cjs.js:1921:7)"
+          },
+          {
+            "functionName": "createDescriptor",
+            "fileName": "file:///G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/@vitejs/plugin-vue/dist/index.mjs",
+            "lineNumber": 74,
+            "columnNumber": 43,
+            "source": "    at createDescriptor (file:///G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/@vitejs/plugin-vue/dist/index.mjs:74:43)"
+          },
+          {
+            "functionName": "transformMain",
+            "fileName": "file:///G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/@vitejs/plugin-vue/dist/index.mjs",
+            "lineNumber": 2367,
+            "columnNumber": 34,
+            "source": "    at transformMain (file:///G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/@vitejs/plugin-vue/dist/index.mjs:2367:34)"
+          },
+          {
+            "functionName": "Object.transform",
+            "fileName": "file:///G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/@vitejs/plugin-vue/dist/index.mjs",
+            "lineNumber": 2910,
+            "columnNumber": 16,
+            "source": "    at Object.transform (file:///G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/@vitejs/plugin-vue/dist/index.mjs:2910:16)"
+          },
+          {
+            "fileName": "file:///G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/vite-plugin-inspect/dist/index.mjs",
+            "lineNumber": 377,
+            "columnNumber": 26,
+            "source": "    at file:///G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/vite-plugin-inspect/dist/index.mjs:377:26"
+          },
+          {
+            "functionName": "plugin.<computed>",
+            "fileName": "file:///G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/vite-plugin-inspect/dist/index.mjs",
+            "lineNumber": 364,
+            "columnNumber": 14,
+            "source": "    at plugin.<computed> (file:///G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/vite-plugin-inspect/dist/index.mjs:364:14)"
+          },
+          {
+            "fileName": "file:///G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/rollup/dist/es/shared/node-entry.js",
+            "lineNumber": 19579,
+            "columnNumber": 40,
+            "source": "    at file:///G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/rollup/dist/es/shared/node-entry.js:19579:40"
+          }
+        ],
+        "raw": {
+          "id": "G:/leanring_NUXTJS/Student-Education-System-frontend/pages/index.vue?macro=true",
+          "plugin": "vite:vue",
+          "name": "RollupError",
+          "hook": "transform",
+          "code": "PLUGIN_ERROR",
+          "watchFiles": [
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/entry.js",
+            "package.json",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/nuxt.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/composables/error.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/ufo/dist/index.mjs",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/ofetch/dist/index.mjs",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/plugins/revive-payload.client.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/head/runtime/plugins/unhead.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/pages/runtime/plugins/router.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/plugins/payload.client.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/plugins/check-outdated-build.client.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/pages/runtime/plugins/prefetch.client.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/components/nuxt-root.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/assets/css/tailwind.css",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/plugins/chunk-reload.client.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/composables/router.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/h3/dist/index.mjs",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/ofetch/dist/shared/ofetch.00501375.mjs",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/destr/dist/index.mjs",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/composables/payload.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/unctx/dist/index.mjs",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/@unhead/vue/dist/index.mjs",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/@unhead/dom/dist/index.mjs",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/pages/runtime/utils.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/composables/manifest.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/composables/ready.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/components/injections.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/components/island-renderer.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/composables/chunk.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/vue-router/dist/vue-router.mjs",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/pages/runtime/router.options.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/pages/runtime/validate.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/node_modules/nuxt/dist/app/middleware/manifest-route-rule.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/exam.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/index.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/teacher.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/App.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/App.ts",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/app.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/app.ts",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/App.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/App.jsx",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/App.mjs",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/App.tsx",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/app.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/app.jsx",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/app.mjs",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/app.tsx",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/Error.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/Error.ts",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/error.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/error.ts",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/Error.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/Error.jsx",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/Error.mjs",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/Error.tsx",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/error.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/error.jsx",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/error.mjs",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/error.tsx",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/app.config.js",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/app.config.ts",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/app.config.mjs",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/components/actionmodal.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/components/AppFooter.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/components/AppHeader.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/components/Box.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/components/dashboardSidebar.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/components/McqCard.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/layouts/default.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/pages/ExamSuccessful.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/pages/HumanVerification.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/pages/index.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LectureSuccessful.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/pages/SelectMode.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/pages/ExamStudent/index.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LecturesMod/capturing.vue",
+            "G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LecturesMod/lectureMod.vue"
+          ]
+        }
+      }
+    }
+  ]
+}
