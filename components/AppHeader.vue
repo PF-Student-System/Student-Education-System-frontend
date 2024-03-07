@@ -1,5 +1,5 @@
 <template>
-  <div class="font-sans antialiased mb-80">
+  <div class="font-sans antialiased">
     <nav class="bg-customgreen py-4">
       <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
         <div class="flex items-center">

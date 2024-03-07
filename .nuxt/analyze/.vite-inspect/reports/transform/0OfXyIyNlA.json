@@ -1,0 +1,212 @@
+{
+  "resolvedId": "virtual:nuxt:G:/leanring_NUXTJS/Student-Education-System-frontend/.nuxt/routes.mjs",
+  "transforms": [
+    {
+      "name": "virtual",
+      "result": "import { default as examxk2S0Dz9qWMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/exam.vue?macro=true\";\nimport { default as indexskPFXN7sGeMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/index.vue?macro=true\";\nimport { default as teacherahtNPLDLIQMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/teacher.vue?macro=true\";\nimport { default as dashboardv9D7LsbupzMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard.vue?macro=true\";\nimport { default as indexxpppmjV5P8Meta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/ExamStudent/index.vue?macro=true\";\nimport { default as ExamSuccessfulq5a5mV8jsQMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/ExamSuccessful.vue?macro=true\";\nimport { default as HumanVerificationRaLxaFoxnfMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/HumanVerification.vue?macro=true\";\nimport { default as indexE4DxntlfQGMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/index.vue?macro=true\";\nimport { default as capturingrThsmIOvXsMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LecturesMod/capturing.vue?macro=true\";\nimport { default as lectureMod4MjM8ldvBIMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LecturesMod/lectureMod.vue?macro=true\";\nimport { default as LectureSuccessfulyPZXlcOX4vMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LectureSuccessful.vue?macro=true\";\nimport { default as SelectModeJ7OyS6eUWiMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/SelectMode.vue?macro=true\";\nexport default [\n  {\n    name: dashboardv9D7LsbupzMeta?.name ?? undefined,\n    path: dashboardv9D7LsbupzMeta?.path ?? \"/dashboard\",\n    meta: dashboardv9D7LsbupzMeta || {},\n    alias: dashboardv9D7LsbupzMeta?.alias || [],\n    redirect: dashboardv9D7LsbupzMeta?.redirect,\n    component: () => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard.vue\").then(m => m.default || m),\n    children: [\n  {\n    name: examxk2S0Dz9qWMeta?.name ?? \"dashboard-exam\",\n    path: examxk2S0Dz9qWMeta?.path ?? \"exam\",\n    meta: examxk2S0Dz9qWMeta || {},\n    alias: examxk2S0Dz9qWMeta?.alias || [],\n    redirect: examxk2S0Dz9qWMeta?.redirect,\n    component: () => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/exam.vue\").then(m => m.default || m)\n  },\n  {\n    name: indexskPFXN7sGeMeta?.name ?? \"dashboard\",\n    path: indexskPFXN7sGeMeta?.path ?? \"\",\n    meta: indexskPFXN7sGeMeta || {},\n    alias: indexskPFXN7sGeMeta?.alias || [],\n    redirect: indexskPFXN7sGeMeta?.redirect,\n    component: () => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/index.vue\").then(m => m.default || m)\n  },\n  {\n    name: teacherahtNPLDLIQMeta?.name ?? \"dashboard-teacher\",\n    path: teacherahtNPLDLIQMeta?.path ?? \"teacher\",\n    meta: teacherahtNPLDLIQMeta || {},\n    alias: teacherahtNPLDLIQMeta?.alias || [],\n    redirect: teacherahtNPLDLIQMeta?.redirect,\n    component: () => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/teacher.vue\").then(m => m.default || m)\n  }\n]\n  },\n  {\n    name: indexxpppmjV5P8Meta?.name ?? \"ExamStudent\",\n    path: indexxpppmjV5P8Meta?.path ?? \"/ExamStudent\",\n    meta: indexxpppmjV5P8Meta || {},\n    alias: indexxpppmjV5P8Meta?.alias || [],\n    redirect: indexxpppmjV5P8Meta?.redirect,\n    component: () => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/ExamStudent/index.vue\").then(m => m.default || m)\n  },\n  {\n    name: ExamSuccessfulq5a5mV8jsQMeta?.name ?? \"ExamSuccessful\",\n    path: ExamSuccessfulq5a5mV8jsQMeta?.path ?? \"/ExamSuccessful\",\n    meta: ExamSuccessfulq5a5mV8jsQMeta || {},\n    alias: ExamSuccessfulq5a5mV8jsQMeta?.alias || [],\n    redirect: ExamSuccessfulq5a5mV8jsQMeta?.redirect,\n    component: () => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/ExamSuccessful.vue\").then(m => m.default || m)\n  },\n  {\n    name: HumanVerificationRaLxaFoxnfMeta?.name ?? \"HumanVerification\",\n    path: HumanVerificationRaLxaFoxnfMeta?.path ?? \"/HumanVerification\",\n    meta: HumanVerificationRaLxaFoxnfMeta || {},\n    alias: HumanVerificationRaLxaFoxnfMeta?.alias || [],\n    redirect: HumanVerificationRaLxaFoxnfMeta?.redirect,\n    component: () => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/HumanVerification.vue\").then(m => m.default || m)\n  },\n  {\n    name: indexE4DxntlfQGMeta?.name ?? \"index\",\n    path: indexE4DxntlfQGMeta?.path ?? \"/\",\n    meta: indexE4DxntlfQGMeta || {},\n    alias: indexE4DxntlfQGMeta?.alias || [],\n    redirect: indexE4DxntlfQGMeta?.redirect,\n    component: () => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/index.vue\").then(m => m.default || m)\n  },\n  {\n    name: capturingrThsmIOvXsMeta?.name ?? \"LecturesMod-capturing\",\n    path: capturingrThsmIOvXsMeta?.path ?? \"/LecturesMod/capturing\",\n    meta: capturingrThsmIOvXsMeta || {},\n    alias: capturingrThsmIOvXsMeta?.alias || [],\n    redirect: capturingrThsmIOvXsMeta?.redirect,\n    component: () => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LecturesMod/capturing.vue\").then(m => m.default || m)\n  },\n  {\n    name: lectureMod4MjM8ldvBIMeta?.name ?? \"LecturesMod-lectureMod\",\n    path: lectureMod4MjM8ldvBIMeta?.path ?? \"/LecturesMod/lectureMod\",\n    meta: lectureMod4MjM8ldvBIMeta || {},\n    alias: lectureMod4MjM8ldvBIMeta?.alias || [],\n    redirect: lectureMod4MjM8ldvBIMeta?.redirect,\n    component: () => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LecturesMod/lectureMod.vue\").then(m => m.default || m)\n  },\n  {\n    name: LectureSuccessfulyPZXlcOX4vMeta?.name ?? \"LectureSuccessful\",\n    path: LectureSuccessfulyPZXlcOX4vMeta?.path ?? \"/LectureSuccessful\",\n    meta: LectureSuccessfulyPZXlcOX4vMeta || {},\n    alias: LectureSuccessfulyPZXlcOX4vMeta?.alias || [],\n    redirect: LectureSuccessfulyPZXlcOX4vMeta?.redirect,\n    component: () => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LectureSuccessful.vue\").then(m => m.default || m)\n  },\n  {\n    name: SelectModeJ7OyS6eUWiMeta?.name ?? \"SelectMode\",\n    path: SelectModeJ7OyS6eUWiMeta?.path ?? \"/SelectMode\",\n    meta: SelectModeJ7OyS6eUWiMeta || {},\n    alias: SelectModeJ7OyS6eUWiMeta?.alias || [],\n    redirect: SelectModeJ7OyS6eUWiMeta?.redirect,\n    component: () => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/SelectMode.vue\").then(m => m.default || m)\n  }\n]",
+      "start": 1709784863331,
+      "end": 1709784863331,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709784863331,
+      "end": 1709784863331,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709784863331,
+      "end": 1709784863331,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709784863332,
+      "end": 1709784863332,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709784863332,
+      "end": 1709784863332,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709784863332,
+      "end": 1709784863332,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709784863332,
+      "end": 1709784863332,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709784863332,
+      "end": 1709784863332,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709784863332,
+      "end": 1709784863332,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709784863332,
+      "end": 1709784863332,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709784863332,
+      "end": 1709784863332,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709784863333,
+      "end": 1709784863333,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1709784863333,
+      "end": 1709784863333,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709784863333,
+      "end": 1709784863333,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709784863333,
+      "end": 1709784863333,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709784863333,
+      "end": 1709784863333,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1709784863333,
+      "end": 1709784863334,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709784863334,
+      "end": 1709784863334,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709784863334,
+      "end": 1709784863334,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709784863334,
+      "end": 1709784863334,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709784863334,
+      "end": 1709784863334,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709784863334,
+      "end": 1709784863334,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709784863334,
+      "end": 1709784863336,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709784863336,
+      "end": 1709784863336,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709784863336,
+      "end": 1709784863336,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709784863337,
+      "end": 1709784863345,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709784863346,
+      "end": 1709784863346,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709784863346,
+      "end": 1709784863346,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1709784863346,
+      "end": 1709784863346,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1709784863347,
+      "end": 1709784863347,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709784863349,
+      "end": 1709784863349,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709784863351,
+      "end": 1709784863352,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "result": "import { __vitePreload } from \"\u0000vite/preload-helper.js\";import { default as examxk2S0Dz9qWMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/exam.vue?macro=true\";\nimport { default as indexskPFXN7sGeMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/index.vue?macro=true\";\nimport { default as teacherahtNPLDLIQMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/teacher.vue?macro=true\";\nimport { default as dashboardv9D7LsbupzMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard.vue?macro=true\";\nimport { default as indexxpppmjV5P8Meta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/ExamStudent/index.vue?macro=true\";\nimport { default as ExamSuccessfulq5a5mV8jsQMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/ExamSuccessful.vue?macro=true\";\nimport { default as HumanVerificationRaLxaFoxnfMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/HumanVerification.vue?macro=true\";\nimport { default as indexE4DxntlfQGMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/index.vue?macro=true\";\nimport { default as capturingrThsmIOvXsMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LecturesMod/capturing.vue?macro=true\";\nimport { default as lectureMod4MjM8ldvBIMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LecturesMod/lectureMod.vue?macro=true\";\nimport { default as LectureSuccessfulyPZXlcOX4vMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LectureSuccessful.vue?macro=true\";\nimport { default as SelectModeJ7OyS6eUWiMeta } from \"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/SelectMode.vue?macro=true\";\nexport default [\n  {\n    name: dashboardv9D7LsbupzMeta?.name ?? undefined,\n    path: dashboardv9D7LsbupzMeta?.path ?? \"/dashboard\",\n    meta: dashboardv9D7LsbupzMeta || {},\n    alias: dashboardv9D7LsbupzMeta?.alias || [],\n    redirect: dashboardv9D7LsbupzMeta?.redirect,\n    component: () => __vitePreload(() => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m),\n    children: [\n  {\n    name: examxk2S0Dz9qWMeta?.name ?? \"dashboard-exam\",\n    path: examxk2S0Dz9qWMeta?.path ?? \"exam\",\n    meta: examxk2S0Dz9qWMeta || {},\n    alias: examxk2S0Dz9qWMeta?.alias || [],\n    redirect: examxk2S0Dz9qWMeta?.redirect,\n    component: () => __vitePreload(() => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/exam.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: indexskPFXN7sGeMeta?.name ?? \"dashboard\",\n    path: indexskPFXN7sGeMeta?.path ?? \"\",\n    meta: indexskPFXN7sGeMeta || {},\n    alias: indexskPFXN7sGeMeta?.alias || [],\n    redirect: indexskPFXN7sGeMeta?.redirect,\n    component: () => __vitePreload(() => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/index.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: teacherahtNPLDLIQMeta?.name ?? \"dashboard-teacher\",\n    path: teacherahtNPLDLIQMeta?.path ?? \"teacher\",\n    meta: teacherahtNPLDLIQMeta || {},\n    alias: teacherahtNPLDLIQMeta?.alias || [],\n    redirect: teacherahtNPLDLIQMeta?.redirect,\n    component: () => __vitePreload(() => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/dashboard/teacher.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  }\n]\n  },\n  {\n    name: indexxpppmjV5P8Meta?.name ?? \"ExamStudent\",\n    path: indexxpppmjV5P8Meta?.path ?? \"/ExamStudent\",\n    meta: indexxpppmjV5P8Meta || {},\n    alias: indexxpppmjV5P8Meta?.alias || [],\n    redirect: indexxpppmjV5P8Meta?.redirect,\n    component: () => __vitePreload(() => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/ExamStudent/index.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: ExamSuccessfulq5a5mV8jsQMeta?.name ?? \"ExamSuccessful\",\n    path: ExamSuccessfulq5a5mV8jsQMeta?.path ?? \"/ExamSuccessful\",\n    meta: ExamSuccessfulq5a5mV8jsQMeta || {},\n    alias: ExamSuccessfulq5a5mV8jsQMeta?.alias || [],\n    redirect: ExamSuccessfulq5a5mV8jsQMeta?.redirect,\n    component: () => __vitePreload(() => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/ExamSuccessful.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: HumanVerificationRaLxaFoxnfMeta?.name ?? \"HumanVerification\",\n    path: HumanVerificationRaLxaFoxnfMeta?.path ?? \"/HumanVerification\",\n    meta: HumanVerificationRaLxaFoxnfMeta || {},\n    alias: HumanVerificationRaLxaFoxnfMeta?.alias || [],\n    redirect: HumanVerificationRaLxaFoxnfMeta?.redirect,\n    component: () => __vitePreload(() => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/HumanVerification.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: indexE4DxntlfQGMeta?.name ?? \"index\",\n    path: indexE4DxntlfQGMeta?.path ?? \"/\",\n    meta: indexE4DxntlfQGMeta || {},\n    alias: indexE4DxntlfQGMeta?.alias || [],\n    redirect: indexE4DxntlfQGMeta?.redirect,\n    component: () => __vitePreload(() => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/index.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: capturingrThsmIOvXsMeta?.name ?? \"LecturesMod-capturing\",\n    path: capturingrThsmIOvXsMeta?.path ?? \"/LecturesMod/capturing\",\n    meta: capturingrThsmIOvXsMeta || {},\n    alias: capturingrThsmIOvXsMeta?.alias || [],\n    redirect: capturingrThsmIOvXsMeta?.redirect,\n    component: () => __vitePreload(() => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LecturesMod/capturing.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: lectureMod4MjM8ldvBIMeta?.name ?? \"LecturesMod-lectureMod\",\n    path: lectureMod4MjM8ldvBIMeta?.path ?? \"/LecturesMod/lectureMod\",\n    meta: lectureMod4MjM8ldvBIMeta || {},\n    alias: lectureMod4MjM8ldvBIMeta?.alias || [],\n    redirect: lectureMod4MjM8ldvBIMeta?.redirect,\n    component: () => __vitePreload(() => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LecturesMod/lectureMod.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: LectureSuccessfulyPZXlcOX4vMeta?.name ?? \"LectureSuccessful\",\n    path: LectureSuccessfulyPZXlcOX4vMeta?.path ?? \"/LectureSuccessful\",\n    meta: LectureSuccessfulyPZXlcOX4vMeta || {},\n    alias: LectureSuccessfulyPZXlcOX4vMeta?.alias || [],\n    redirect: LectureSuccessfulyPZXlcOX4vMeta?.redirect,\n    component: () => __vitePreload(() => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/LectureSuccessful.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: SelectModeJ7OyS6eUWiMeta?.name ?? \"SelectMode\",\n    path: SelectModeJ7OyS6eUWiMeta?.path ?? \"/SelectMode\",\n    meta: SelectModeJ7OyS6eUWiMeta || {},\n    alias: SelectModeJ7OyS6eUWiMeta?.alias || [],\n    redirect: SelectModeJ7OyS6eUWiMeta?.redirect,\n    component: () => __vitePreload(() => import(\"G:/leanring_NUXTJS/Student-Education-System-frontend/pages/SelectMode.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  }\n]",
+      "start": 1709784863352,
+      "end": 1709784863355,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709784863355,
+      "end": 1709784863355,
+      "order": "normal"
+    }
+  ]
+}
