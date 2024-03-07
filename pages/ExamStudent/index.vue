@@ -1,6 +1,13 @@
 <template>
-  <div class="border-2 border-customgreen rounded-md mx-10 flex justify-between items-center px-5">
-    <h1 class="text-customgreen ml-5 text-2xl font-bold">Exam</h1>
+  <div
+    class="border-2 border-customgreen rounded-md mx-10 flex justify-between mt-10 items-center px-5 sticky top-5 bg-white"
+    :style="textColor === ''
+        ? 'border : 2px solid customgreen'
+        : `border : 2px solid ${textColor}`
+      ">
+    <h1 class="text-customgreen ml-5 text-2xl font-bold" :style="`color : ${textColor}`">
+      Exam
+    </h1>
     <p class="text-customgreen text-xl" :style="`color : ${textColor}`" v-show="time">
       Time remaining: {{ displayTime }}
     </p>
@@ -10,23 +17,26 @@
   </div>
   <p class="text-customgraytext mx-10 mt-4 text-xl">Answer all the questions</p>
   <div v-for="(questions, index) in myExam.questions" :key="questions.questionText" class="card">
-    <mcqCard :questions="questions" :questionIndex="index" />
+    <mcqCard :questions="questions" :questionIndex="index" :timesUp="timeUp" />
   </div>
   <div class="p-10 text-center">
-    <button class="btn hover:btnHover">Submit Exam</button>
-    <button @click="takeScreenshot">Start Capture</button>
-    <button @click="stopCapture">Stop Capture</button>
+    <button class="btn hover:btnHover w-[200px] text-xl font-semibold">Submit Exam</button>
+    <button @click="stopCapture" class="btn ml-10">Stop Capture</button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import screenshot from "~/mixins/screenshot";
-import { myExam } from "~/types/exam";
+import { myExam } from "~/utils/exam";
+
 const timeLeft = ref(300);
-var textColor = "";
+var textColor = ref("");
 const timeUp = ref(false);
 const time = ref(true);
 let countdown: NodeJS.Timeout | null = null;
+const { takeScreenshot, stopCapture, frames } = screenshot();
+console.log(frames);
+
 const displayTime = computed(() => {
   const minutes = Math.floor(timeLeft.value / 60);
   const seconds = timeLeft.value % 60;
@@ -44,16 +54,14 @@ const startCountdown = () => {
     }
 
     if (timeLeft.value <= 30 && timeLeft.value >= 0) {
-      textColor = "red";
+      textColor.value = "red";
     }
   }, 1000);
 };
-const { takeScreenshot, stopCapture, frames } = screenshot();
-console.log(frames);
 
 onMounted(() => {
-  console.log("hello", myExam);
   startCountdown();
+  takeScreenshot();
 });
 
 onBeforeUnmount(() => {
