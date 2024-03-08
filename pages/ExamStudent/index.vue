@@ -20,28 +20,49 @@
     <mcqCard :questions="questions" :questionIndex="index" :timesUp="timeUp" />
   </div>
   <div class="p-10 text-center">
-    <button class="btn hover:btnHover w-[200px] text-xl font-semibold">Submit Exam</button>
-    <button @click="stopCapture" class="btn ml-10">Stop Capture</button>
+      
+    <nuxt-link to="/ExamSuccessful">
+      <button class="btn hover:btnHover w-[200px] text-xl font-semibold"> Submit Exam </button>
+    </nuxt-link>
   </div>
 </template>
 
 <script lang="ts" setup>
 import screenshot from "~/mixins/screenshot";
 import { myExam } from "~/utils/exam";
+import { slideShow } from "~/mixins/VideoShow";
+import camScreenshot from "~/mixins/camScreenshot";
 
 const timeLeft = ref(300);
 var textColor = ref("");
 const timeUp = ref(false);
 const time = ref(true);
 let countdown: NodeJS.Timeout | null = null;
-const { takeScreenshot, stopCapture, frames } = screenshot();
+const { takeScreenshot, stopCaptureScreeenshot, takeScreenshotOnLoop ,  frames } = screenshot();
+const { startCapture, stopCapture, captureImage, imagearray } = camScreenshot();
+const { startSlideshow , currentImage } = slideShow();
 console.log(frames);
+const videoref = ref(null);
+const keyPressed = ref<string | null>(null);
 
 const displayTime = computed(() => {
   const minutes = Math.floor(timeLeft.value / 60);
   const seconds = timeLeft.value % 60;
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 });
+
+const handleKeyPress = (event: KeyboardEvent) => {
+      keyPressed.value = event.key;
+      captureImage();
+      takeScreenshotOnLoop();
+      console.log('hello key press')
+    };
+
+    const handleMouseClick = () => {
+      captureImage();
+      takeScreenshotOnLoop();
+      console.log('hello key mouse click');
+    };
 
 const startCountdown = () => {
   countdown = setInterval(() => {
@@ -62,7 +83,24 @@ const startCountdown = () => {
 onMounted(() => {
   startCountdown();
   takeScreenshot();
+  startCapture();
+  window.addEventListener('keydown', handleKeyPress);
+  window.addEventListener('click', handleMouseClick);
+  
 });
+
+onUnmounted(() => {
+  stopCaptureScreeenshot();
+  stopCapture();
+  window.removeEventListener('keydown', handleKeyPress);
+  window.removeEventListener('click', handleMouseClick);
+  console.log("unmounted")
+});
+
+   const stopactions = () =>{
+    stopCaptureScreeenshot();
+    stopCapture();
+    }
 
 onBeforeUnmount(() => {
   if (countdown) {

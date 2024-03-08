@@ -4,7 +4,7 @@ export function useWebcamRecorder() {
   const images = ref<string[]>([]);
   const videoElement = ref<HTMLVideoElement | null>(null);
   const isCapturing = ref<boolean>(false);
-  let captureInterval: NodeJS.Timeout | null = null;
+  let captureInterval: ReturnType<typeof setInterval>;
 
   const startCapture = async (videoRef: HTMLVideoElement) => {
     isCapturing.value = true;
@@ -15,6 +15,7 @@ export function useWebcamRecorder() {
       if (videoElement.value) {
         videoElement.value.srcObject = stream;
         videoElement.value.play();
+        console.log('hello');
         clearInterval(captureInterval as NodeJS.Timeout);
         captureInterval = setInterval(() => {
           const canvas = document.createElement('canvas');
@@ -23,6 +24,7 @@ export function useWebcamRecorder() {
           const context = canvas.getContext('2d');
           context?.drawImage(videoElement.value as CanvasImageSource, 0, 0, canvas.width, canvas.height);
           images.value.push(canvas.toDataURL('image/jpeg'));
+          
         }, 4000);
       }
     } catch (error) {
