@@ -31,8 +31,11 @@
 </template>
 
 <script lang="ts">
+import { useMode } from "~/store/modepath.js";
 export default {
   setup() {
+    const store = useMode();
+    const mode = store.mode;
     interface Box {
       id: number;
       checked: boolean;
@@ -48,7 +51,7 @@ export default {
     });
 
     function createBoxes() {
-      for (let i = 0; i < 49; i++) {
+      for (let i = 0; i < 4; i++) {
         boxes.value.push({ id: i, checked: false, selected: false });
       }
       console.log(boxes.value);
@@ -67,8 +70,15 @@ export default {
       console.log(box.checked);
       box.selected = true;
 
-      if (counter.value === 49) {
-        navigateTo("/examstudent");
+      if (counter.value === 4) {
+        console.log(mode);
+        if (mode === "exam") {
+          navigateTo("/examstudent");
+        } else if (mode === "lecture") {
+          navigateTo("/lectures");
+        } else {
+          console.log("not working");
+        }
       }
     }
 
