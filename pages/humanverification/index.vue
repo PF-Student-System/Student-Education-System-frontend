@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center">
-    <div class="w-[80%] p-10 rounded-md shadow-2xl h-full mt-5">
+    <div class="w-[80%] p-10 rounded-md shadow-2xl h-full mt-5 mb-5">
       <div class="text-center">
         <h1 class="text-2xl font-bold pl-2 pt-3 text-customgrayheading">
           Human Verification
