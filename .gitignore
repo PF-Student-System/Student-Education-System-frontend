@@ -5,11 +5,6 @@
 .nitro
 .cache
 dist
-<<<<<<< HEAD
-=======
-
->>>>>>> f7e590c77bb5de2a343b34b482f42a3b1db672c0
-
 # Node dependencies
 node_modules
 
