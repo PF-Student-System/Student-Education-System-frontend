@@ -12,7 +12,6 @@ export default function camScreenshot() {
     if (intervalId) {
       clearInterval(intervalId);
     }
-    console.log(imagearray);
   }
 
   async function captureImage() {
