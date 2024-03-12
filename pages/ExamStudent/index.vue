@@ -21,7 +21,7 @@
   </div>
   <div class="p-10 text-center">
       
-    <nuxt-link to="/ExamSuccessful">
+    <nuxt-link to="/ExamStudent/ExamSuccessful">
       <button @click="stopactions" class="btn hover:btnHover w-[200px] text-xl font-semibold"> Submit Exam </button>
     </nuxt-link>
   </div>
@@ -32,6 +32,8 @@ import screenshot from "~/mixins/screenshot";
 import { myExam } from "~/utils/exam";
 import { slideShow } from "~/mixins/VideoShow";
 import camScreenshot from "~/mixins/camScreenshot";
+import { useImageExams } from "~/store/imageDataForExam"
+const store = useImageExams();
 
 const timeLeft = ref(300);
 var textColor = ref("");
@@ -41,7 +43,6 @@ let countdown: NodeJS.Timeout | null = null;
 const { takeScreenshot, stopCaptureScreenshot, takeScreenshotOnLoop ,  frames } = screenshot();
 const { startCapture, stopCapture, captureImage, imagearray } = camScreenshot();
 const { startSlideshow , currentImage } = slideShow();
-console.log(frames);
 const videoref = ref(null);
 const keyPressed = ref<string | null>(null);
 
@@ -94,7 +95,7 @@ onUnmounted(() => {
   stopCapture();
   window.removeEventListener('keydown', handleKeyPress);
   window.removeEventListener('click', handleMouseClick);
-  console.log("unmounted")
+  store.imageDataSavingToPinia(frames ,imagearray)
 });
 
    const stopactions = () =>{

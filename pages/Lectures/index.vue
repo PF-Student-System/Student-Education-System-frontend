@@ -1,7 +1,7 @@
 <template>
   <div>
     <handlingLectures @lectureFinished="handleLectureFinished" />
-    <nuxt-link to="/lectureSuccessful" class="no-underline">
+    <nuxt-link to="/lectures/lectureSuccessful" class="no-underline">
       <button :disabled="!finishEnabled" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8">
         Finish Lecture
       </button>
