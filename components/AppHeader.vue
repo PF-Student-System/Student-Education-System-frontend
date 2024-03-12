@@ -3,7 +3,9 @@
     <nav class="bg-customgreen py-4">
       <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
         <div class="flex items-center">
+          <NuxtLink to="/">
           <span class="text-white text-lg font-bold mr-4">Tracking App</span>
+        </NuxtLink>
         </div>
         <div class="flex items-center">
           <input type="checkbox" class="hidden" id="menu-toggle">
@@ -12,7 +14,7 @@
           </label>
           <div class="flex items-center">
             <span class="text-white ml-2 px-5">John Doe</span>
-            <img src="/public/Img.jpeg" alt="Profile" class="h-8 w-8 rounded-full bg-white">
+            <img src="/Img.jpeg" alt="Profile" class="h-8 w-8 rounded-full bg-white">
             <!-- Dropdown Button -->
             <button @click="toggleDropdown" ref="dropdownToggle" id="dropdown-toggle" class="text-white focus:outline-none">
               <!-- Add dropdown icon here -->
@@ -20,11 +22,8 @@
             </button>
           </div>
           <!-- Dropdown Menu -->
-          <div v-show="dropdownOpen" ref="dropdownMenu" id="dropdown-menu" class="dropdown-menu absolute right-0 mt-[230px] w-48 bg-white rounded-md shadow-lg z-10">
-            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Home</a>
-            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">About</a>
-            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Lecture Mode</a>
-            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Student Exam</a>
+          <div v-show="dropdownOpen" ref="dropdownMenu" id="dropdown-menu" class="dropdown-menu absolute right-0 mt-[109px] w-48 bg-white rounded-md shadow-lg z-10">
+            <NuxtLink to="/" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Home</NuxtLink>
           </div>
         </div>
       </div>
