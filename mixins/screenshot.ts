@@ -23,14 +23,16 @@ export default function screenshot () {
         console.log('Screenshot taken', frames);
     }
     
-    function stopCaptureScreeenshot() {
-        clearInterval(intervalId);
+    function stopCaptureScreenshot() {
+        if(intervalId){
+         clearInterval(intervalId);
+        }
     }
 
     return {
         takeScreenshotOnLoop,
         takeScreenshot,
-        stopCaptureScreeenshot,
+        stopCaptureScreenshot,
         frames,
     };
 }
