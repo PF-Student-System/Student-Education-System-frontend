@@ -2,7 +2,7 @@
 <template >
   
      <div class="bg-white py-4 ">
-    <h1 style="text-align:center " class="text-customgreen text-2xl font-bold mr-4 mb-5">Scan Your Face</h1>
+    <h1 style="text-align:center " class="text-customgreen text-2xl font-bold mr-4 mb-5">Scan Your Face to Login</h1>
       
     <div class="flex justify-center mb-5 ">
         <!-- only show video if not Captured -->
@@ -10,7 +10,7 @@
       </div>
 
       <div  class="flex justify-center" >
-        <button   class="btn hover:btnHover text-lg font-semibold w-72 mt-2" @click="captureImage" v-if="!captured.value" >Scan</button>
+       <NuxtLink to="/SelectMode"> <button   class="btn hover:btnHover text-lg font-semibold w-72 mt-2" @click="captureImage" v-if="!captured.value" >Login</button></NuxtLink>
         <!-- <button class="btn" @click="gotoSignuppage"  >SignUp</button> -->
         <!-- <NuxtLink to="/Signup" class="btn">SignUp</NuxtLink> -->
       </div>

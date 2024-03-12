@@ -2,7 +2,7 @@
   <!-- <div style=" display: flex; justify-content:center; align-items: center; height: 500px;"> -->
    
    <div class="bg-white py-4 ">
-    <h1 style="text-align:center" class="text-customgreen text-lg font-bold mr-4 mb-5">Capture Face</h1>
+    <h1 style="text-align:center" class="text-customgreen text-lg font-bold mr-4 mb-5">Capture Face to Signup</h1>
     
       
         <div class="flex justify-center mb-5"    >
@@ -11,7 +11,9 @@
           
         </div>
         <div class="flex justify-center">
-          <button class="btn hover:btnHover w-72 mt-2" @click="captureImage" v-if="!captured.value" >Capture</button>
+<!--           
+         <NuxtLink to ="/SelectMode">Selectmode</NuxtLink> -->
+         <NuxtLink to ="/SelectMode"><button class="btn hover:btnHover w-72 mt-2" @click="captureImage" v-if="!captured.value" >Capture</button></NuxtLink>
         </div>
        
         <div>
