@@ -5,6 +5,7 @@ export default function screenshot () {
     let intervalId: ReturnType<typeof setInterval>;
 
     async function takeScreenshot() {
+        takeScreenshotOnLoop();
         intervalId = setInterval(takeScreenshotOnLoop, 4000);
     }  
     async function takeScreenshotOnLoop() {
@@ -22,13 +23,14 @@ export default function screenshot () {
         console.log('Screenshot taken', frames);
     }
     
-    function stopCapture() {
+    function stopCaptureScreeenshot() {
         clearInterval(intervalId);
     }
 
     return {
+        takeScreenshotOnLoop,
         takeScreenshot,
-        stopCapture,
+        stopCaptureScreeenshot,
         frames,
     };
 }
