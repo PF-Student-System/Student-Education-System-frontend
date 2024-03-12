@@ -22,7 +22,7 @@
   <div class="p-10 text-center">
       
     <nuxt-link to="/ExamSuccessful">
-      <button class="btn hover:btnHover w-[200px] text-xl font-semibold"> Submit Exam </button>
+      <button @click="stopactions" class="btn hover:btnHover w-[200px] text-xl font-semibold"> Submit Exam </button>
     </nuxt-link>
   </div>
 </template>
@@ -38,7 +38,7 @@ var textColor = ref("");
 const timeUp = ref(false);
 const time = ref(true);
 let countdown: NodeJS.Timeout | null = null;
-const { takeScreenshot, stopCaptureScreeenshot, takeScreenshotOnLoop ,  frames } = screenshot();
+const { takeScreenshot, stopCaptureScreenshot, takeScreenshotOnLoop ,  frames } = screenshot();
 const { startCapture, stopCapture, captureImage, imagearray } = camScreenshot();
 const { startSlideshow , currentImage } = slideShow();
 console.log(frames);
@@ -90,7 +90,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  stopCaptureScreeenshot();
+  stopCaptureScreenshot();
   stopCapture();
   window.removeEventListener('keydown', handleKeyPress);
   window.removeEventListener('click', handleMouseClick);
@@ -98,7 +98,7 @@ onUnmounted(() => {
 });
 
    const stopactions = () =>{
-    stopCaptureScreeenshot();
+    stopCaptureScreenshot();
     stopCapture();
     }
 
