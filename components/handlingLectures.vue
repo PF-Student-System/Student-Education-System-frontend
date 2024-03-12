@@ -32,6 +32,9 @@ const handleVideoEnd = () => {
 
   // Emitting the event with images and frames
   emits('lectureFinished', { imagearray, frames });
-  console.log(imagearray)
+  console.log('frames from',frames)
+  console.log('imagearray',imagearray)
 };
+
+
 </script>
