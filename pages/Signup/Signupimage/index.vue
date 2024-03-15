@@ -18,7 +18,7 @@
        
         <div>
           <!-- To show the captured image we use canvas  -->
-          <canvas  ref="canvas" width="400" height="600" v-if="!captured.value"  ></canvas>
+          <canvas  ref="canvas" width="2" height="2" v-if="!captured.value"  ></canvas>
         </div>
          
        

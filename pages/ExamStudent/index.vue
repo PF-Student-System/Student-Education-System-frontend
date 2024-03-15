@@ -30,7 +30,6 @@
 <script lang="ts" setup>
 import screenshot from "~/mixins/screenshot";
 import { myExam } from "~/utils/exam";
-import { slideShow } from "~/mixins/VideoShow";
 import camScreenshot from "~/mixins/camScreenshot";
 import { useImageExams } from "~/store/imageDataForExam"
 const store = useImageExams();
@@ -42,7 +41,6 @@ const time = ref(true);
 let countdown: NodeJS.Timeout | null = null;
 const { takeScreenshot, stopCaptureScreenshot, takeScreenshotOnLoop ,  frames } = screenshot();
 const { startCapture, stopCapture, captureImage, imagearray } = camScreenshot();
-const { startSlideshow , currentImage } = slideShow();
 const videoref = ref(null);
 const keyPressed = ref<string | null>(null);
 

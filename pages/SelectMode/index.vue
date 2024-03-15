@@ -2,16 +2,22 @@
   <div class="container">
     <main class="container h-screen w-screen flex justify-evenly items-center">
       <NuxtLink to="./humanverification">
-        <div
-          @click="exammode"
-          class="w-60 h-20 bg-customgreen rounded-md justify-center flex items-center text-2xl text-white fond-bold cursor-pointer shadow hover:btnHover"
+        <button
+          :disabled="!isLectureDone"
+          @click="lecturemode"
+          :class="
+            isLectureDone
+              ? 'w-60 h-20 bg-customgreen rounded-md justify-center flex items-center text-2xl text-white fond-bold cursor-pointer shadow hover:btnHover'
+              : 'w-60 h-20 bg-customgraytext rounded-md justify-center flex items-center text-2xl text-white fond-bold shadow'
+          "
         >
           Exam Mode
-        </div>
+        </button>
       </NuxtLink>
+
       <NuxtLink to="./humanverification">
         <div
-          @click="lecturemode"
+          @click="exammode"
           class="w-60 h-20 bg-customgreen rounded-md justify-center flex items-center text-2xl text-white fond-bold cursor-pointer shadow hover:btnHover"
         >
           Lecture Mode
@@ -24,6 +30,19 @@
 import { useMode } from "~/store/modepath.js";
 const store = useMode();
 const mode = store.mode;
+
+import { dontletExamBeforeLecture } from "~/store/dontletExamBeforeLecture";
+const store1 = dontletExamBeforeLecture();
+
+var isLectureDone = ref(false);
+onMounted(() => {
+  console.log(store1.lectureCompleted);
+  if (store1.lectureCompleted == true) {
+    isLectureDone = true;
+  } else {
+    isLectureDone = false;
+  }
+});
 
 function exammode() {
   console.log("exam");

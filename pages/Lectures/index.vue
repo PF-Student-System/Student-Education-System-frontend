@@ -18,6 +18,8 @@
 <script setup>
 import { ref,reactive } from 'vue';
 import { slideShow } from '@/mixins/VideoShow';
+import { dontletExamBeforeLecture } from "~/store/dontletExamBeforeLecture";
+const store = dontletExamBeforeLecture();
 
 const finishEnabled = ref(false);
 const lectureData = reactive({ images: [], frames: [] });
@@ -30,6 +32,11 @@ const handleLectureFinished = (data) => {
   console.log("Images:", lectureData.images);
   console.log("Frames:", lectureData.frames);
 };
+
+onUnmounted(() => {
+        store.completeLecture();
+        console.log("completed");
+});
 
 </script>
 
