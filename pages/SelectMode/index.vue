@@ -4,7 +4,7 @@
       <NuxtLink to="./humanverification">
         <button
           :disabled="!isLectureDone"
-          @click="lecturemode"
+          @click="exammode"
           :class="
             isLectureDone
               ? 'w-60 h-20 bg-customgreen rounded-md justify-center flex items-center text-2xl text-white fond-bold cursor-pointer shadow hover:btnHover'
@@ -17,7 +17,7 @@
 
       <NuxtLink to="./humanverification">
         <div
-          @click="exammode"
+          @click="lecturemode"
           class="w-60 h-20 bg-customgreen rounded-md justify-center flex items-center text-2xl text-white fond-bold cursor-pointer shadow hover:btnHover"
         >
           Lecture Mode

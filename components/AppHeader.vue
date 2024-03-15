@@ -22,7 +22,7 @@
             </button>
           </div>
           <!-- Dropdown Menu -->
-          <div v-show="dropdownOpen" ref="dropdownMenu" id="dropdown-menu" class="dropdown-menu absolute right-0 mt-[109px] w-48 bg-white rounded-md shadow-lg z-10">
+          <div v-show="dropdownOpen" @click="toggleDropdown" ref="dropdownMenu" id="dropdown-menu" class="dropdown-menu absolute right-0 mt-[109px] w-48 bg-white rounded-md shadow-lg z-10">
             <NuxtLink to="/" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Home</NuxtLink>
           </div>
         </div>
