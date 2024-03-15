@@ -20,22 +20,26 @@
       </div>
     </div>
   </div>
-  <div class="text-center pt-10">
-    <button
+  <div class="text-center pt-10" >
+    <button v-show="isVisible"
       class="btn text-center w-[100px] hover:btnHover cursor-pointer font-2xl font-semibold"
-      @click="startClicked"
+      @click="startClicked" 
     >
       Start
     </button>
   </div>
 </template>
 
-<script lang="ts">
+<script  lang="ts">
+
 import { useMode } from "~/store/modepath.js";
+import {ref } from 'vue';
 export default {
   setup() {
     const store = useMode();
     const mode = store.mode;
+    const isVisible = ref(true);  // Controls visibility of the element
+    
     interface Box {
       id: number;
       checked: boolean;
@@ -45,7 +49,7 @@ export default {
     const boxes = ref<Box[]>([]);
     const disabled = ref<boolean>(true);
     const counter = ref<number>(0);
-
+    
     onMounted(() => {
       createBoxes();
     });
@@ -58,7 +62,11 @@ export default {
     }
 
     function startClicked() {
-      disabled.value = false;
+       disabled.value = false;
+       isVisible.value = false; 
+      // Hide the element
+     
+      
     }
 
     function boxClicked(box: Box) {
@@ -88,6 +96,7 @@ export default {
       counter,
       startClicked,
       boxClicked,
+      isVisible,
     };
   },
 };
