@@ -6,8 +6,8 @@
         <tr>
           <th class="p-2 text-start">Student Name</th>
           <th class="p-2 text-start">Face</th>
-          <th class="p-2 text-start">Lecture</th>
-          <th class="p-2 text-start">Exam</th>
+          <th class="p-2 text-center">Lecture</th>
+          <th class="p-2 text-center">Exam</th>
         </tr>
       </thead>
       <tbody class="text-customblue">
@@ -16,40 +16,40 @@
           <td class="p-2">
             <img class="w-8" src="/public/Sample_User_Icon.png" />
           </td>
-          <td class="p-2">2</td>
-          <td class="p-2">2</td>
+          <td class="p-2 text-center">2</td>
+          <td class="p-2 text-center">2</td>
         </tr>
         <tr>
           <td class="p-2">Student 2</td>
           <td class="p-2">
             <img class="w-8" src="/public/Sample_User_Icon.png" />
           </td>
-          <td class="p-2">3</td>
-          <td class="p-2">3</td>
+          <td class="p-2 text-center">3</td>
+          <td class="p-2 text-center">3</td>
         </tr>
         <tr>
           <td class="p-2">Student 3</td>
           <td class="p-2">
             <img class="w-8" src="/public/Sample_User_Icon.png" />
           </td>
-          <td class="p-2">4</td>
-          <td class="p-2">4</td>
+          <td class="p-2 text-center">4</td>
+          <td class="p-2 text-center">4</td>
         </tr>
         <tr>
           <td class="p-2">Student 4</td>
           <td class="p-2">
             <img class="w-8" src="/public/Sample_User_Icon.png" />
           </td>
-          <td class="p-2">7</td>
-          <td class="p-2">7</td>
+          <td class="p-2 text-center">7</td>
+          <td class="p-2 text-center">7</td>
         </tr>
         <tr>
           <td class="p-2">Student 5</td>
           <td class="p-2">
             <img class="w-8" src="/public/Sample_User_Icon.png" />
           </td>
-          <td class="p-2">0</td>
-          <td class="p-2">0</td>
+          <td class="p-2 text-center">0</td>
+          <td class="p-2 text-center">0</td>
         </tr>
       </tbody>
     </table>
