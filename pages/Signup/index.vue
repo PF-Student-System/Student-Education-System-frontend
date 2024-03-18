@@ -55,7 +55,7 @@ const isFormValid = computed(() => isValidFirstName.value && isValidLastName.val
 const handleSubmit = () => {
 
   router.push('Signup/Signupimage');
-  //console.log(user);
+  console.log(user);
 
 };
 
