@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-export const signup = defineStore("signup", () => {
+export const useSignup = defineStore("signup", () => {
   const fName = ref(null);
   const lName = ref(null);
   const role = ref(null);
@@ -9,5 +9,5 @@ export const signup = defineStore("signup", () => {
     role.value = r;
   }
 
-  return { signup, set };
+  return { fName, lName, role, set };
 });
