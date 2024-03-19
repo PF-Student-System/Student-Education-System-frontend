@@ -8,7 +8,7 @@ interface AuthStore {
 }
 
 export const useAuth = defineStore("auth", () => {
-  const auth: Ref<boolean> = ref(false);
+  const auth: Ref<boolean> = ref(true);
 
   function login(): void {
     auth.value = true;
