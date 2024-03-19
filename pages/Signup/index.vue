@@ -71,7 +71,6 @@ const handleSubmit = () => {
   //setting the values in the store
   store.set(user.firstname, user.lastname, user.usertype);
   router.push("Signup/Signupimage");
-  // console.log(store.fName, store.lName, store.role);
 };
 
 // function steptwo(){

@@ -11,7 +11,6 @@ export const dontletExamBeforeLecture = defineStore("dontletExamBeforeLecture", 
 
   function completeLecture(): void {
     lectureCompleted.value = true;
-    console.log("----->", lectureCompleted.value);
   }
 
   return { completeLecture, lectureCompleted } as LectureStore;
