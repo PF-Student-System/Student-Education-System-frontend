@@ -11,14 +11,12 @@
 
       <div  class="flex justify-center" >
        <NuxtLink to="/SelectMode"> <button   class="btn hover:btnHover text-lg font-semibold w-72 mt-2" @click="captureImage" v-if="!captured.value" >Login</button></NuxtLink>
-        <!-- <button class="btn" @click="gotoSignuppage"  >SignUp</button> -->
-        <!-- <NuxtLink to="/Signup" class="btn">SignUp</NuxtLink> -->
       </div>
      
-      <div>
-        <!-- To show the captured image we use canvas  -->
-        <canvas  ref="canvas" width="2" height="2" v-if="!captured.value"  ></canvas>
-      </div>
+       <!-- To show the captured image we use canvas  -->
+      <!-- <div>
+        <canvas  ref="canvas" width="720" height="360" v-if="!captured.value"  ></canvas>
+      </div> -->
        
     </div>    
 </template>
@@ -26,7 +24,7 @@
 import { ref, onMounted } from 'vue';
 
 const player = ref(null);
-const canvas = ref(null); // Use ref(null) to correctly initialize the canvas
+//const canvas = ref(null); // Use ref(null) to correctly initialize the canvas
 const captured = ref(false); // State to control the visibility of video/canvas
 
 const constraints = {
@@ -47,17 +45,23 @@ async function initCamera() {
   }
 }
 
- function captureImage() {
-  if (player.value && canvas.value ) {
-    const context = canvas.value.getContext('2d');
-    context.drawImage(player.value, 0, 0, canvas.value.width, canvas.value.height);
-    
+
+  function captureImage() { 
     captured.value = true;
      // Stop video tracks
   player.value.srcObject.getVideoTracks().forEach((track) => track.stop());
-  //console.log(canvas.value,'canvas value')
-  console.log(context);
-}
+
+    const canvas =  document.createElement("canvas")
+   // canvas.width = constraints.video.width;
+   // canvas.height = constraints.video.height;
+   canvas.width = 1260;
+   canvas.height = 720;
+    const context = canvas.getContext('2d');
+    context.drawImage(player.value, 0, 0, canvas.width, canvas.height);
+console.log(context);
+  const imageDataUrl =  canvas.toDataURL('image/png');
+    console.log(imageDataUrl);
+
 }
 onMounted(() => {
   initCamera();
