@@ -66,28 +66,40 @@ function captureImage() {
   player.value.srcObject.getVideoTracks().forEach((track) => track.stop());
 
   const canvas = document.createElement("canvas");
-  // canvas.width = constraints.video.width;
-  // canvas.height = constraints.video.height;
+  canvas.width = constraints.video.width;
+  canvas.height = constraints.video.height;
   canvas.width = 1260;
   canvas.height = 720;
   const context = canvas.getContext("2d");
   context.drawImage(player.value, 0, 0, canvas.width, canvas.height);
-  console.log(context);
+  // console.log(context);
   const imageDataUrl = canvas.toDataURL("image/png");
   // console.log(imageDataUrl);
   apicall(imageDataUrl);
 }
 
-function apicall(imageDataUrl) {
-  const newobj = {
-    firstname: store.fName,
-    lastname: store.lName,
-    role: store.role,
-    image: imageDataUrl,
-  };
-  console.log(newobj);
-  navigateTo("/");
-}
+const apicall = async (imageDataUrl) => {
+  const res = await $fetch(
+    "https://1f81-110-39-140-190.ngrok-free.app/users/register",
+    {
+      method: "post",
+      body: {
+        firstName: store.fName,
+        lastName: store.lName,
+        role: store.role,
+        image: imageDataUrl,
+      },
+    }
+  );
+
+  console.log(res);
+
+  if (res._id) {
+    navigateTo("/");
+  } else {
+    navigateTo("/signup");
+  }
+};
 
 onMounted(() => {
   initCamera();
