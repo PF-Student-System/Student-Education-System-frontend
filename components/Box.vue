@@ -32,8 +32,8 @@
 
 <script  lang="ts">
 
-import { useMode } from "~/store/modepath.js";
-import {ref } from 'vue';
+import { useMode } from "~/store/modepath";
+// import {  Ref } from 'vue';
 export default {
   setup() {
     const store = useMode();

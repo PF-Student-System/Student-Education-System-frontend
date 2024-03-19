@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import { useSignup } from "~/store/signup.js";
+import { useSignup } from "~/store/signup";
 import { ref, onMounted } from "vue";
 const store = useSignup();
 const player = ref(null);

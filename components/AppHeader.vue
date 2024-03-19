@@ -1,13 +1,13 @@
 <template>
   <div class="font-sans antialiased">
     <nav class="bg-customgreen py-4">
-      <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <div class="max-w-8xl pl-12 flex justify-between items-center">
         <div class="flex items-center">
           <NuxtLink to="/">
-            <span class="text-white text-lg font-bold mr-4">Tracking App</span>
+            <span class="text-white text-lg font-bold mr-4 flex items-center"><i class="material-icons pr-1">equalizer</i> Tracking App</span>
           </NuxtLink>
         </div>
-        <div class="flex items-center">
+        <div class="flex items-center pr-16">
           <input type="checkbox" class="hidden" id="menu-toggle" />
           <label for="menu-toggle" class="cursor-pointer md:hidden block mr-4">
             <i class="fas fa-bars text-white text-2xl"></i>

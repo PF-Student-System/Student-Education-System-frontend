@@ -44,7 +44,7 @@
 </template>
 <script setup lang="ts">
 //importing store
-import { useSignup } from "~/store/signup.js";
+import { useSignup } from "~/store/signup";
 import { reactive, computed } from "vue";
 //storing it in a variable
 const store = useSignup();
