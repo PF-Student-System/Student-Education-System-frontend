@@ -13,8 +13,11 @@
         <div class="flex justify-center">
 <!--           
          <NuxtLink to ="/SelectMode">Selectmode</NuxtLink> -->
-         <NuxtLink to ="/SelectMode"><button class="btn hover:btnHover w-72 mt-2" @click="firstfunction" v-if="!captured.value" >Capture</button></NuxtLink>
+         <NuxtLink to ="/SelectMode"><button class="btn hover:btnHover w-72 mt-2" @click="captureImage" v-if="!captured.value" >Capture</button></NuxtLink>
         </div>
+       
+        
+         
        
     </div>   
   </template>
@@ -23,6 +26,7 @@
   import { ref, onMounted } from 'vue';
   
   const player = ref(null);
+  
   const captured = ref(false); // State to control the visibility of video/canvas
   
   const constraints = {
@@ -42,45 +46,30 @@
       console.error(`navigator.getUserMedia error: ${e.toString()}`);
     }
   }
-
-  function firstfunction (){
-captureImage();
-saveimage();
-console.log("firstfunction called")
-
-  };
   
-   function captureImage() {
-console.log("imagecapture")
-
-     if (player.value  ) {
-       captured.value = true;
-  //      // Stop video tracks
-     player.value.srcObject.getVideoTracks().forEach((track) => track.stop());
-     console.log(player.value,'player value');
-   } 
-  }
- async function saveimage(){
-    console.log("saveimage")
-   if (player.value){
   
-    //using canvas to convert bitmap to dataUrl
-    const canvas = document.createElement("canvas");
-    const Context = canvas.getContext('2d');
-    canvas.width = player.value.videoWidth; // Use the actual video width
-    canvas.height = player.value.videoHeight; // Use the actual video height
 
-    Context.drawImage(player.value, 0, 0, canvas.width, canvas.height);
-  
-    // Convert the canvas content to a Base64 string
-    const imageDataUrl = canvas.value.toDataURL('image/png');
+ function captureImage() { 
+    captured.value = true;
+     // Stop video tracks
+  player.value.srcObject.getVideoTracks().forEach((track) => track.stop());
+
+    const canvas =  document.createElement("canvas")
+   // canvas.width = constraints.video.width;
+   // canvas.height = constraints.video.height;
+   canvas.width = 1260;
+   canvas.height = 720;
+    const context = canvas.getContext('2d');
+    context.drawImage(player.value, 0, 0, canvas.width, canvas.height);
+console.log(context);
+  const imageDataUrl =  canvas.toDataURL('image/png');
     console.log(imageDataUrl);
-   }
-  }
+
+}
+onMounted(() => {
+  initCamera();
+});
   
-  onMounted(() => {
-    initCamera();
-  });
   </script>
   
   
