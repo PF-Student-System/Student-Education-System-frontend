@@ -22,15 +22,14 @@
     <div class="flex justify-center">
       <!--           
          <NuxtLink to ="/SelectMode">Selectmode</NuxtLink> -->
-      <NuxtLink to="/SelectMode"
-        ><button
-          class="btn hover:btnHover w-72 mt-2"
-          @click="captureImage"
-          v-if="!captured.value"
-        >
-          Capture
-        </button></NuxtLink
+
+      <button
+        class="btn hover:btnHover w-72 mt-2"
+        @click="captureImage"
+        v-if="!captured.value"
       >
+        Capture
+      </button>
     </div>
   </div>
 </template>
@@ -87,6 +86,7 @@ function apicall(imageDataUrl) {
     image: imageDataUrl,
   };
   console.log(newobj);
+  navigateTo("/");
 }
 
 onMounted(() => {
