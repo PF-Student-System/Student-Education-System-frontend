@@ -27,7 +27,7 @@
   </div>
 </template>
 <script setup>
-import { useMode } from "~/store/modepath.js";
+import { useMode } from "~/store/modepath";
 const store = useMode();
 const mode = store.mode;
 
