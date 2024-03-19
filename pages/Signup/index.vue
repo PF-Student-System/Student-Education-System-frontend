@@ -29,8 +29,8 @@
           class="h-8 border rounded-md px-2 w-full mb-5"
         >
           <option value="">select User</option>
-          <option value="Student">Student</option>
-          <option value="Teacher">Teacher</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
         </select>
         <button
           type="submit"
