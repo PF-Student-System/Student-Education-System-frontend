@@ -31,6 +31,12 @@
         Capture
       </button>
     </div>
+    <!-- <div>
+      <img
+        ref="image"
+        :src="image"
+      >
+    </div> -->
   </div>
 </template>
 
@@ -39,7 +45,7 @@ import { useSignup } from "~/store/signup";
 import { ref, onMounted } from "vue";
 const store = useSignup();
 const player = ref(null);
-
+let image = ref(false);
 const captured = ref(false); // State to control the visibility of video/canvas
 
 const constraints = {
@@ -50,37 +56,36 @@ const constraints = {
 };
 
 async function initCamera() {
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia(constraints);
-    if (player.value) {
-      player.value.srcObject = stream;
-    }
-  } catch (e) {
-    console.error(`navigator.getUserMedia error: ${e.toString()}`);
-  }
+  navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((stream) => {
+          player.value.srcObject = stream;
+        })
+        .catch((error) => {
+          console.error("Error accessing webcam:", error);
+        });
 }
 
 function captureImage() {
   captured.value = true;
-  // Stop video tracks
-  player.value.srcObject.getVideoTracks().forEach((track) => track.stop());
-
-  const canvas = document.createElement("canvas");
-  canvas.width = constraints.video.width;
-  canvas.height = constraints.video.height;
-  canvas.width = 1260;
-  canvas.height = 720;
-  const context = canvas.getContext("2d");
-  context.drawImage(player.value, 0, 0, canvas.width, canvas.height);
-  // console.log(context);
-  const imageDataUrl = canvas.toDataURL("image/png");
-  // console.log(imageDataUrl);
+    const canvas = document.createElement("canvas");
+    canvas.width = player.value.videoWidth;
+    canvas.height = 400;
+    const context = canvas.getContext("2d");
+    context.drawImage(player.value, 0, 0, canvas.width, 400);
+    const imageDataUrl = canvas.toDataURL("image/png");
+    image = imageDataUrl;
+    const stream = player.value.srcObject;
+    const tracks = stream.getTracks();
+    tracks.forEach((track) => {
+      track.stop();
+    });
   apicall(imageDataUrl);
 }
 
 const apicall = async (imageDataUrl) => {
   const res = await $fetch(
-    "https://1f81-110-39-140-190.ngrok-free.app/users/register",
+    "https://ae0d-110-39-140-190.ngrok-free.app/users/register",
     {
       method: "post",
       body: {

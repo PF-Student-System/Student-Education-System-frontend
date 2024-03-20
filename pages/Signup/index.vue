@@ -45,7 +45,7 @@
 <script setup lang="ts">
 //importing store
 import { useSignup } from "~/store/signup";
-import { reactive, computed } from "vue";
+// import { reactive, computed } from "vue";
 //storing it in a variable
 const store = useSignup();
 export interface user {
@@ -71,7 +71,6 @@ const handleSubmit = () => {
   //setting the values in the store
   store.set(user.firstname, user.lastname, user.usertype);
   router.push("Signup/Signupimage");
-  // console.log(store.fName, store.lName, store.role);
 };
 
 // function steptwo(){
