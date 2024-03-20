@@ -13,10 +13,11 @@
         <div class="flex justify-center">
 <!--           
          <NuxtLink to ="/SelectMode">Selectmode</NuxtLink> -->
-         <NuxtLink to ="/SelectMode"><button class="btn hover:btnHover w-72 mt-2" @click="captureImage" v-if="!captured.value" >Capture</button></NuxtLink>
+         <!-- <NuxtLink to ="/SelectMode"> -->
+          <button class="btn hover:btnHover w-72 mt-2" @click="captureImage" v-if="!captured.value" >Capture</button>
+        <!-- </NuxtLink> -->
         </div>
-       
-        
+       <img :src="images" alt="">
          
        
     </div>   
@@ -28,6 +29,8 @@
   const player = ref(null);
   
   const captured = ref(false); // State to control the visibility of video/canvas
+  const images = ref(false); // State to control the visibility of video/canvas
+
   
   const constraints = {
     video: {
@@ -35,7 +38,6 @@
       height: 360,
     },
   };
-  
   async function initCamera() {
     try {
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
@@ -46,9 +48,6 @@
       console.error(`navigator.getUserMedia error: ${e.toString()}`);
     }
   }
-  
-  
-
  function captureImage() { 
     captured.value = true;
      // Stop video tracks
@@ -56,7 +55,7 @@
 
     const canvas =  document.createElement("canvas")
    // canvas.width = constraints.video.width;
-   // canvas.height = constraints.video.height;
+   //canvas.height = constraints.video.height;
    canvas.width = 1260;
    canvas.height = 720;
     const context = canvas.getContext('2d');
@@ -64,7 +63,7 @@
 console.log(context);
   const imageDataUrl =  canvas.toDataURL('image/png');
     console.log(imageDataUrl);
-
+    images.value = imageDataUrl;
 }
 onMounted(() => {
   initCamera();
