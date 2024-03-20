@@ -32,8 +32,6 @@
     <!-- <div>
       <img
         ref="image"
-        width="720"
-        height="360"
         :src="image"
       >
     </div> -->
@@ -72,13 +70,13 @@ function captureImage() {
       const context = canvas.getContext("2d");
       context.drawImage(player.value, 0, 0, canvas.width, 400);
       const imageDataUrl = canvas.toDataURL("image/png");
-      image = imageDataUrl;
       const stream = player.value.srcObject;
       const tracks = stream.getTracks();
       tracks.forEach((track) => {
         track.stop();
       });
   apicall(imageDataUrl);
+  console.log(imageDataUrl)
 }
 onMounted(() => {
   initCamera();

@@ -31,6 +31,12 @@
         Capture
       </button>
     </div>
+    <!-- <div>
+      <img
+        ref="image"
+        :src="image"
+      >
+    </div> -->
   </div>
 </template>
 
@@ -39,7 +45,7 @@ import { useSignup } from "~/store/signup";
 import { ref, onMounted } from "vue";
 const store = useSignup();
 const player = ref(null);
-
+let image = ref(false);
 const captured = ref(false); // State to control the visibility of video/canvas
 
 const constraints = {
