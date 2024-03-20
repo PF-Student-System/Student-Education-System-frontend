@@ -29,8 +29,8 @@
           class="h-8 border rounded-md px-2 w-full mb-5"
         >
           <option value="">select User</option>
-          <option value="Student">Student</option>
-          <option value="Teacher">Teacher</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
         </select>
         <button
           type="submit"
@@ -44,8 +44,8 @@
 </template>
 <script setup lang="ts">
 //importing store
-import { useSignup } from "~/store/signup.js";
-import { reactive, computed } from "vue";
+import { useSignup } from "~/store/signup";
+// import { reactive, computed } from "vue";
 //storing it in a variable
 const store = useSignup();
 export interface user {
@@ -71,7 +71,6 @@ const handleSubmit = () => {
   //setting the values in the store
   store.set(user.firstname, user.lastname, user.usertype);
   router.push("Signup/Signupimage");
-  // console.log(store.fName, store.lName, store.role);
 };
 
 // function steptwo(){

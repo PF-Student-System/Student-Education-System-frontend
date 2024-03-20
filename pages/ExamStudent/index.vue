@@ -60,7 +60,7 @@ const handleKeyPress = (event: KeyboardEvent) => {
     const handleMouseClick = () => {
       captureImage();
       takeScreenshotOnLoop();
-      console.log('hello key mouse click');
+      console.log('hello mouse click');
     };
 
 const startCountdown = () => {

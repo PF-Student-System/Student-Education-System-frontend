@@ -27,7 +27,7 @@
   </div>
 </template>
 <script setup>
-import { useMode } from "~/store/modepath.js";
+import { useMode } from "~/store/modepath";
 const store = useMode();
 const mode = store.mode;
 
@@ -36,7 +36,6 @@ const store1 = dontletExamBeforeLecture();
 
 var isLectureDone = ref(false);
 onMounted(() => {
-  console.log(store1.lectureCompleted);
   if (store1.lectureCompleted == true) {
     isLectureDone = true;
   } else {
@@ -45,14 +44,10 @@ onMounted(() => {
 });
 
 function exammode() {
-  console.log("exam");
   store.exam();
-  console.log(store.mode);
 }
 
 function lecturemode() {
-  console.log("lecture");
   store.lecture();
-  console.log(store.mode);
 }
 </script>

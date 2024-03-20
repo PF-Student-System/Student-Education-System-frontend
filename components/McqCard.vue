@@ -22,7 +22,6 @@
     const selectedOptionIndex = ref<number | null>(null);
 
     const handleOptionSelect = (optionIndex: number) => {
-      console.log('-------->',selectedOptionIndex)
     };
 </script>
 <style scoped>
