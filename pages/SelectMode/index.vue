@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <main class="container h-screen w-screen flex justify-evenly items-center">
+  <div class="">
+    <main class=" h-screen  flex justify-evenly items-center">
       <NuxtLink to="./humanverification">
         <button
           :disabled="!isLectureDone"

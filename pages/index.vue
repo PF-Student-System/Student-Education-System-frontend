@@ -16,6 +16,13 @@
         v-if="!captured.value"
         style="border-radius: 10px"
       ></video>
+      <input
+          type="text"
+          required
+          v-model="VideoText"
+          placeholder="Video"
+          class="h-8 border rounded-md mb-3 px-2 w-72"
+        /><br />
     </div>
 
     <div class="flex justify-center">
@@ -37,7 +44,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import pako from "pako";
-
+const VideoText = ref(null);
 const player = ref(null);
 let image = ref(null); // Use ref(null) to correctly initialize the canvas
 const captured = ref(false); // State to control the visibility of video/canvas
@@ -90,11 +97,11 @@ const apicall = async (imageDataUrl) => {
   // webpImage.src = imageDataUrl;
   // document.body.appendChild(webpImage);
   const res = await $fetch(
-    "https://6418-202-163-113-83.ngrok-free.app/users/login",
+    "https://79fb067c3d6318a35628c63e5776650b.serveo.net/users/login",
     {
       method: "post",
       body: {
-        image: imageDataUrl,
+        image: VideoText.value,
       },
     }
   );
