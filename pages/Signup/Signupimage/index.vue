@@ -8,6 +8,13 @@
     >
       Capture Face to Signup
     </h1>
+    <input
+          type="text"
+          required
+          v-model="VideoText"
+          placeholder="Video"
+          class="h-8 border rounded-md mb-3 px-2 w-72"
+        /><br />
 
     <div class="flex justify-center mb-5">
       <!-- only show video if not Captured -->
@@ -31,12 +38,12 @@
         Capture
       </button>
     </div>
-    <!-- <div>
+    <div>
       <img
         ref="image"
         :src="image"
       >
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -45,6 +52,7 @@ import { useSignup } from "~/store/signup";
 import { ref, onMounted } from "vue";
 const store = useSignup();
 const player = ref(null);
+const VideoText = ref(null);
 let image = ref(false);
 const captured = ref(false); // State to control the visibility of video/canvas
 
@@ -57,47 +65,58 @@ const constraints = {
 
 async function initCamera() {
   navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then((stream) => {
-          player.value.srcObject = stream;
-        })
-        .catch((error) => {
-          console.error("Error accessing webcam:", error);
-        });
+    .getUserMedia({ video: true })
+    .then((stream) => {
+      player.value.srcObject = stream;
+    })
+    .catch((error) => {
+      console.error("Error accessing webcam:", error);
+    });
 }
 
 function captureImage() {
   captured.value = true;
-    const canvas = document.createElement("canvas");
-    canvas.width = player.value.videoWidth;
-    canvas.height = 400;
-    const context = canvas.getContext("2d");
-    context.drawImage(player.value, 0, 0, canvas.width, 400);
-    const imageDataUrl = canvas.toDataURL("image/png");
-    image = imageDataUrl;
-    const stream = player.value.srcObject;
-    const tracks = stream.getTracks();
-    tracks.forEach((track) => {
-      track.stop();
-    });
+  const canvas = document.createElement("canvas");
+  canvas.width = player.value.videoWidth;
+  canvas.height = 400;
+  const context = canvas.getContext("2d");
+  context.drawImage(player.value, 0, 0, canvas.width, 400);
+  const imageDataUrl = canvas.toDataURL("image/webp");
+  image = imageDataUrl;
+  const stream = player.value.srcObject;
+  const tracks = stream.getTracks();
+  tracks.forEach((track) => {
+    track.stop();
+  });
   apicall(imageDataUrl);
 }
 
 const apicall = async (imageDataUrl) => {
   const res = await $fetch(
-    "https://ae0d-110-39-140-190.ngrok-free.app/users/register",
+    "https://79fb067c3d6318a35628c63e5776650b.serveo.net/users/register",
     {
       method: "post",
       body: {
         firstName: store.fName,
         lastName: store.lName,
         role: store.role,
-        image: imageDataUrl,
+        // image: imageDataUrl,
+        image : VideoText.value,
       },
-    }
+    },
   );
 
-  console.log(res);
+  const res1 = await $fetch(
+    "https://568e-202-163-113-83.ngrok-free.app/users/course",
+    {
+      method: "post",
+      body: {
+        courseName : store.StudentCourse
+      },
+    },
+  );
+  console.log(imageDataUrl)
+  console.log(res1);
 
   if (res._id) {
     navigateTo("/");
