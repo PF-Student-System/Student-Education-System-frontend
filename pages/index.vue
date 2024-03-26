@@ -44,6 +44,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import pako from "pako";
+
+
+const config = useRuntimeConfig()
 const VideoText = ref(null);
 const player = ref(null);
 let image = ref(null); // Use ref(null) to correctly initialize the canvas
@@ -58,13 +61,16 @@ const constraints = {
 
 async function initCamera() {
   navigator.mediaDevices
-    .getUserMedia({ video: true })
-    .then((stream) => {
-      player.value.srcObject = stream;
-    })
-    .catch((error) => {
-      console.error("Error accessing webcam:", error);
-    });
+        .getUserMedia({ video: true })
+        .then((stream) => {
+          player.value.srcObject = stream;
+        })
+        .catch((error) => {
+          console.error("Error accessing webcam:", error);
+        });
+
+        // console.log(process.server)
+        console.log(config.public.clientSecret)
 }
 
 function captureImage() {
@@ -84,6 +90,7 @@ function captureImage() {
   console.log(imageDataUrl);
 }
 onMounted(() => {
+  
   initCamera();
 });
 
@@ -97,7 +104,7 @@ const apicall = async (imageDataUrl) => {
   // webpImage.src = imageDataUrl;
   // document.body.appendChild(webpImage);
   const res = await $fetch(
-    "https://79fb067c3d6318a35628c63e5776650b.serveo.net/users/login",
+    "https://381f-110-39-140-214.ngrok-free.app/users/login",
     {
       method: "post",
       body: {
@@ -107,7 +114,8 @@ const apicall = async (imageDataUrl) => {
   );
 
   if (res) {
-    console.log("ok");
+    // console.log("ok");
+    console.log(res)
     if (res.message) {
       console.log(res.message);
       navigateTo("/signup");
