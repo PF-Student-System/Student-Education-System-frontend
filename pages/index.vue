@@ -16,6 +16,13 @@
         v-if="!captured.value"
         style="border-radius: 10px"
       ></video>
+      <input
+          type="text"
+          required
+          v-model="VideoText"
+          placeholder="Video"
+          class="h-8 border rounded-md mb-3 px-2 w-72"
+        /><br />
     </div>
 
     <div class="flex justify-center">
@@ -30,16 +37,14 @@
 
     <!-- To show the captured image we use canvas  -->
     <!-- <div>
-      <img
-        ref="image"
-        :src="image"
-      >
+      <img ref="image" :src="image" />
     </div> -->
   </div>
 </template>
 <script setup>
 import { ref, onMounted } from "vue";
-
+import pako from "pako";
+const VideoText = ref(null);
 const player = ref(null);
 let image = ref(null); // Use ref(null) to correctly initialize the canvas
 const captured = ref(false); // State to control the visibility of video/canvas
@@ -53,42 +58,50 @@ const constraints = {
 
 async function initCamera() {
   navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then((stream) => {
-          player.value.srcObject = stream;
-        })
-        .catch((error) => {
-          console.error("Error accessing webcam:", error);
-        });
+    .getUserMedia({ video: true })
+    .then((stream) => {
+      player.value.srcObject = stream;
+    })
+    .catch((error) => {
+      console.error("Error accessing webcam:", error);
+    });
 }
 
 function captureImage() {
-      captured.value = true;
-      const canvas = document.createElement("canvas");
-      canvas.width = player.value.videoWidth;
-      canvas.height = 400;
-      const context = canvas.getContext("2d");
-      context.drawImage(player.value, 0, 0, canvas.width, 400);
-      const imageDataUrl = canvas.toDataURL("image/png");
-      const stream = player.value.srcObject;
-      const tracks = stream.getTracks();
-      tracks.forEach((track) => {
-        track.stop();
-      });
+  captured.value = true;
+  const canvas = document.createElement("canvas");
+  canvas.width = player.value.videoWidth;
+  canvas.height = 400;
+  const context = canvas.getContext("2d");
+  context.drawImage(player.value, 0, 0, canvas.width, 400);
+  const imageDataUrl = canvas.toDataURL("image/webp");
+  const stream = player.value.srcObject;
+  const tracks = stream.getTracks();
+  tracks.forEach((track) => {
+    track.stop();
+  });
   apicall(imageDataUrl);
-  console.log(imageDataUrl)
+  console.log(imageDataUrl);
 }
 onMounted(() => {
   initCamera();
 });
 
 const apicall = async (imageDataUrl) => {
+  const compressedData = pako.gzip(imageDataUrl);
+  const compressedBase64 = btoa(
+    String.fromCharCode.apply(null, compressedData)
+  );
+  console.log(compressedBase64);
+  // const webpImage = new Image();
+  // webpImage.src = imageDataUrl;
+  // document.body.appendChild(webpImage);
   const res = await $fetch(
-    "https://ae0d-110-39-140-190.ngrok-free.app/users/login",
+    "https://79fb067c3d6318a35628c63e5776650b.serveo.net/users/login",
     {
       method: "post",
       body: {
-        image: imageDataUrl,
+        image: VideoText.value,
       },
     }
   );

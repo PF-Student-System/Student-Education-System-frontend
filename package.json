@@ -17,6 +17,7 @@
     "browser-image-compression": "^2.0.2",
     "html2canvas": "^1.4.1",
     "nuxt": "^3.10.3",
+    "pako": "^2.1.0",
     "pinia": "^2.1.7",
     "tailwindcss": "^3.4.1",
     "vue": "^3.4.19",

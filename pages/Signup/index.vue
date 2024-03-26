@@ -26,13 +26,21 @@
         <select
           required
           v-model="user.usertype"
-          class="h-8 border rounded-md px-2 w-full mb-5"
+          class="h-8 border rounded-md px-2 w-full mb-5 class='text-customgreen' "
         >
-          <option value="">select User</option>
-          <option value="student">Student</option>
+          <option value="" >Select User</option>
+          <option value="student" >Student</option>
           <option value="teacher">Teacher</option>
         </select>
-        <NuxtLink to="/Signup/Signupimage">
+        <select
+          v-if="user.usertype == 'student'"
+          required
+          v-model="user.StudentCourse"
+          class="h-8 border rounded-md px-2 w-full mb-5 class='text-customgreen' "
+        >
+          <!-- <option value="" >Select Courses</option> -->
+          <option value="Maths" >Maths</option>
+        </select>
         <button
           type="submit"
           class="bg-customgreen hover:btnHover rounded-md text-white h-8 w-full"
@@ -54,13 +62,16 @@ export interface user {
   firstname: String;
   lastname: String;
   usertype: string | null;
+  StudentCourse  : string | null; 
 }
 const user = reactive<user>({
   firstname: "",
   lastname: "",
   usertype: "",
+  StudentCourse : "",
 });
 
+const userStudentType = ref(null);
 const router = useRouter();
 const isValidFirstName = computed(() => user.firstname.length >= 3);
 const isValidLastName = computed(() => user.lastname.length >= 3);
@@ -71,9 +82,12 @@ const isFormValid = computed(
 
 const handleSubmit = () => {
   //setting the values in the store
-  store.set(user.firstname, user.lastname, user.usertype);
+  store.set(user.firstname, user.lastname, user.usertype , user.StudentCourse);
   router.push("Signup/Signupimage");
 };
+
+
+
 
 // function steptwo(){
 const steptwo = () => {};

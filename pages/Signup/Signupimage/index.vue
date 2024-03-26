@@ -8,6 +8,13 @@
     >
       Capture Face to Signup
     </h1>
+    <input
+          type="text"
+          required
+          v-model="VideoText"
+          placeholder="Video"
+          class="h-8 border rounded-md mb-3 px-2 w-72"
+        /><br />
 
     <div class="flex justify-center mb-5">
       <!-- only show video if not Captured -->
@@ -32,14 +39,10 @@
       </button>
     </div>
     <div>
-      <!-- <img
+      <img
         ref="image"
         :src="image"
-      > -->
-
-
-      
-
+      >
     </div>
   </div>
 </template>
@@ -51,6 +54,7 @@ import { ref, onMounted } from "vue";
 import imageCompression from 'browser-image-compression';
 const store = useSignup();
 const player = ref(null);
+const VideoText = ref(null);
 let image = ref(false);
 const captured = ref(false); // State to control the visibility of video/canvas
 
@@ -63,92 +67,58 @@ const constraints = {
 
 async function initCamera() {
   navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then((stream) => {
-          player.value.srcObject = stream;
-        })
-        .catch((error) => {
-          console.error("Error accessing webcam:", error);
-        });
+    .getUserMedia({ video: true })
+    .then((stream) => {
+      player.value.srcObject = stream;
+    })
+    .catch((error) => {
+      console.error("Error accessing webcam:", error);
+    });
 }
 
 async function captureImage() {
   captured.value = true;
-    const canvas = document.createElement("canvas");
-    canvas.width = player.value.videoWidth;
-    canvas.height = 400;
-    const context = canvas.getContext("2d");
-    context.drawImage(player.value, 0, 0, canvas.width, 400);
-    //const imageDataUrl = canvas.toDataURL("image/png");
-    //image = imageDataUrl;
-    const stream = player.value.srcObject;
-    const tracks = stream.getTracks();
-    tracks.forEach((track) => {
-      track.stop();
-    });
-console.log(canvas);
-    // Compress image right after capturing it
-  //const blob = await fetch(canvas.toDataURL()).then(res => res.blob());
- //const blob =await new Promise(resolve=>canvas.toBlob(resolve,'image/png'))
- const blob =await new Promise(resolve=>canvas.toBlob(resolve,'image/webp'))
-  console.log(blob)
- const compressedImage = await compressImage(blob);
-  console.log('Compressed Image Blob:', compressedImage);
- // image.value = URL.createObjectURL(compressedImage);
-  //stopCamera();
-
-  const reader = new FileReader();
-  reader.readAsDataURL(compressedImage);
- // reader.onloadend = function (){
-//const compressedImageDataUrl = reader.result;
-   // apicall(compressedImageDataUrl);
-  reader.onloadend = ()=> apicall(reader.result);
- 
-
-};
-
-
-   //apicall(imageDataUrl);
-//}
-
-async function compressImage(file) {
-  const options = {
-    maxSizeMB: 0.5,
-    maxWidthOrHeight: 1280,
-    useWebWorker: true,
-  };
-  try {
-    return await imageCompression(file, options);
-  } catch (error) {
-    console.error('Error compressing the image:', error);
-    return file; // Return original file on error
-  }
-};
-
+  const canvas = document.createElement("canvas");
+  canvas.width = player.value.videoWidth;
+  canvas.height = 400;
+  const context = canvas.getContext("2d");
+  context.drawImage(player.value, 0, 0, canvas.width, 400);
+  const imageDataUrl = canvas.toDataURL("image/webp");
+  image = imageDataUrl;
+  const stream = player.value.srcObject;
+  const tracks = stream.getTracks();
+  tracks.forEach((track) => {
+    track.stop();
+  });
+  apicall(imageDataUrl);
+}
 
 const apicall = async (imageDataUrl) => {
   const res = await $fetch(
-    "https://9a32-39-61-60-56.ngrok-free.app/users/register",
+    "https://79fb067c3d6318a35628c63e5776650b.serveo.net/users/register",
     {
       method: "post",
       body: {
         firstName: store.fName,
         lastName: store.lName,
         role: store.role,
-        image: imageDataUrl,
+        // image: imageDataUrl,
+        image : VideoText.value,
       },
-    }
+    },
   );
-  const payload = {
-  firstName: store.fName,
-  lastName: store.lName,
-  role: store.role,
-  image: imageDataUrl,
-};
 
-console.log('Payload being sent to API:', payload);
-
-  console.log(res);
+  const res1 = await $fetch(
+    "https://568e-202-163-113-83.ngrok-free.app/users/course",
+    {
+      method: "post",
+      body: {
+        courseName : store.StudentCourse
+      },
+    },
+  );
+  console.log(imageDataUrl)
+  console.log(res1);
 
   if (res._id) {
     navigateTo("/");
