@@ -86,7 +86,6 @@ function captureImage() {
 
 
 
-
 onMounted(() => {
   initCamera();
 });
