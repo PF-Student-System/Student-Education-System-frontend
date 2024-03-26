@@ -32,12 +32,14 @@
           <option value="student">Student</option>
           <option value="teacher">Teacher</option>
         </select>
+        <NuxtLink to="/Signup/Signupimage">
         <button
           type="submit"
           class="bg-customgreen hover:btnHover rounded-md text-white h-8 w-full"
         >
           Next
         </button>
+      </NuxtLink>
       </form>
     </div>
   </div>

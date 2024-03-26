@@ -31,18 +31,24 @@
         Capture
       </button>
     </div>
-    <!-- <div>
-      <img
+    <div>
+      <!-- <img
         ref="image"
         :src="image"
-      >
-    </div> -->
+      > -->
+
+
+      
+
+    </div>
   </div>
 </template>
 
 <script setup>
+
 import { useSignup } from "~/store/signup";
 import { ref, onMounted } from "vue";
+import imageCompression from 'browser-image-compression';
 const store = useSignup();
 const player = ref(null);
 let image = ref(false);
@@ -66,26 +72,63 @@ async function initCamera() {
         });
 }
 
-function captureImage() {
+async function captureImage() {
   captured.value = true;
     const canvas = document.createElement("canvas");
     canvas.width = player.value.videoWidth;
     canvas.height = 400;
     const context = canvas.getContext("2d");
     context.drawImage(player.value, 0, 0, canvas.width, 400);
-    const imageDataUrl = canvas.toDataURL("image/png");
-    image = imageDataUrl;
+    //const imageDataUrl = canvas.toDataURL("image/png");
+    //image = imageDataUrl;
     const stream = player.value.srcObject;
     const tracks = stream.getTracks();
     tracks.forEach((track) => {
       track.stop();
     });
-  apicall(imageDataUrl);
-}
+console.log(canvas);
+    // Compress image right after capturing it
+  //const blob = await fetch(canvas.toDataURL()).then(res => res.blob());
+ //const blob =await new Promise(resolve=>canvas.toBlob(resolve,'image/png'))
+ const blob =await new Promise(resolve=>canvas.toBlob(resolve,'image/webp'))
+  console.log(blob)
+ const compressedImage = await compressImage(blob);
+  console.log('Compressed Image Blob:', compressedImage);
+ // image.value = URL.createObjectURL(compressedImage);
+  //stopCamera();
+
+  const reader = new FileReader();
+  reader.readAsDataURL(compressedImage);
+ // reader.onloadend = function (){
+//const compressedImageDataUrl = reader.result;
+   // apicall(compressedImageDataUrl);
+  reader.onloadend = ()=> apicall(reader.result);
+ 
+
+};
+
+
+   //apicall(imageDataUrl);
+//}
+
+async function compressImage(file) {
+  const options = {
+    maxSizeMB: 0.5,
+    maxWidthOrHeight: 1280,
+    useWebWorker: true,
+  };
+  try {
+    return await imageCompression(file, options);
+  } catch (error) {
+    console.error('Error compressing the image:', error);
+    return file; // Return original file on error
+  }
+};
+
 
 const apicall = async (imageDataUrl) => {
   const res = await $fetch(
-    "https://ae0d-110-39-140-190.ngrok-free.app/users/register",
+    "https://9a32-39-61-60-56.ngrok-free.app/users/register",
     {
       method: "post",
       body: {
@@ -96,6 +139,14 @@ const apicall = async (imageDataUrl) => {
       },
     }
   );
+  const payload = {
+  firstName: store.fName,
+  lastName: store.lName,
+  role: store.role,
+  image: imageDataUrl,
+};
+
+console.log('Payload being sent to API:', payload);
 
   console.log(res);
 
