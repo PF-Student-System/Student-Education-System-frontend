@@ -41,6 +41,7 @@
           <!-- <option value="" >Select Courses</option> -->
           <option value="Maths" >Maths</option>
         </select>
+        <NuxtLink>
         <button
           type="submit"
           class="bg-customgreen hover:btnHover rounded-md text-white h-8 w-full"
@@ -82,7 +83,7 @@ const isFormValid = computed(
 
 const handleSubmit = () => {
   //setting the values in the store
-  store.set(user.firstname, user.lastname, user.usertype , user.StudentCourse);
+  store.set(user.firstname , user.lastname, user.usertype , user.StudentCourse);
   router.push("Signup/Signupimage");
 };
 

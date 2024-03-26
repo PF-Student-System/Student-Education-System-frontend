@@ -83,6 +83,10 @@ function captureImage() {
   apicall(imageDataUrl);
   console.log(imageDataUrl);
 }
+
+
+
+
 onMounted(() => {
   initCamera();
 });
@@ -92,7 +96,7 @@ const apicall = async (imageDataUrl) => {
   const compressedBase64 = btoa(
     String.fromCharCode.apply(null, compressedData)
   );
-  console.log(compressedBase64);
+ // console.log(compressedBase64);
   // const webpImage = new Image();
   // webpImage.src = imageDataUrl;
   // document.body.appendChild(webpImage);
