@@ -37,7 +37,7 @@
 
     <!-- To show the captured image we use canvas  -->
     <!-- <div>
-       <img ref="image" :src="image" />
+      <img ref="image" :src="image" />
     </div> -->
   </div>
 </template>
@@ -71,22 +71,21 @@ async function initCamera() {
 
         // console.log(process.server)
         console.log(config.public.clientSecret)
-
 }
 
 function captureImage() {
-      captured.value = true;
-      const canvas = document.createElement("canvas");
-      canvas.width = player.value.videoWidth;
-      canvas.height = 400;
-      const context = canvas.getContext("2d");
-      context.drawImage(player.value, 0, 0, canvas.width, 400);
-      const imageDataUrl = canvas.toDataURL("image/webp");
-      const stream = player.value.srcObject;
-      const tracks = stream.getTracks();
-      tracks.forEach((track) => {
-        track.stop();
-      });
+  captured.value = true;
+  const canvas = document.createElement("canvas");
+  canvas.width = player.value.videoWidth;
+  canvas.height = 400;
+  const context = canvas.getContext("2d");
+  context.drawImage(player.value, 0, 0, canvas.width, 400);
+  const imageDataUrl = canvas.toDataURL("image/webp");
+  const stream = player.value.srcObject;
+  const tracks = stream.getTracks();
+  tracks.forEach((track) => {
+    track.stop();
+  });
   apicall(imageDataUrl);
   console.log(imageDataUrl);
 }
