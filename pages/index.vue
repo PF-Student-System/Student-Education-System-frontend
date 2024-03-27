@@ -130,8 +130,8 @@ fetch("https://app.facia.ai/backend/api/transaction/create-transaction", request
   .then(result => {
     let data = JSON.parse(result)
     console.log(data)
-    // console.log('-------->',data.result.data.reference_id)
-    // faciaFaceSearch(token, data.result.data.reference_id)
+    console.log('-------->',data.result.data.reference_id)
+    faciaFaceSearch(token, data.result.data.reference_id);
   })
   .catch(error => console.log('error', error));
     
@@ -154,7 +154,7 @@ var requestOptions = {
   body: formdata,
   redirect: 'follow'
 };
-
+console.log("hello")
 
 fetch("https://app.facia.ai/backend/api/transaction/face-search-result", requestOptions)
   .then(response => response.text())
@@ -162,7 +162,7 @@ fetch("https://app.facia.ai/backend/api/transaction/face-search-result", request
     result => {
     let data1 = result
     data1 = JSON.parse(data1);
-    // console.log('-------->',data1.result.data.face_search_response.result.matched_faces)
+    console.log('-------->',data1)
 })
   .catch(error => console.log('error', error));
 
