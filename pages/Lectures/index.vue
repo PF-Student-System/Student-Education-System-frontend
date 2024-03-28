@@ -1,17 +1,19 @@
 <template>
-  <div>
+  <div class="flex flex-col items-center">
+    <div class="w-[80%]">
     <handlingLectures @lectureFinished="handleLectureFinished" />
     <nuxt-link to="/lectures/lectureSuccessful" class="no-underline">
-      <button :disabled="!finishEnabled" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8">
+      <button :disabled="!finishEnabled" class="btn font-bold py-2 px-4 mt-8 mb-8">
         Finish Lecture
       </button>
     </nuxt-link>
+  </div>
     <!-- Display the slideshow buttons and image -->
-    <div class="m-4">
+    <!-- <div class="m-4">
       <button @click="startSlideshow(lectureData.images)">Start Images Slideshow</button>
       <button @click="startSlideshow(lectureData.frames)">Start Frames Slideshow</button>
       <img :src="currentImage" alt="currentImages" v-if="currentImage">
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -32,6 +34,32 @@ const handleLectureFinished = (data) => {
   console.log("Images:", lectureData.images);
   console.log("Frames:", lectureData.frames);
 };
+  onMounted(async()=>{
+  try {
+      const response = await fetch('https://79fb067c3d6318a35628c63e5776650b.serveo.net/user/lactures');
+      if (!response.ok) {
+        console.log("error")
+        throw new Error('Network response was not ok');
+      }
+      const data =  response;
+      console.log('-------------------->',data);
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    }
+
+
+
+  // try {
+  //     const response = await this.$axios.get('https://568e-202-163-113-83.ngrok-free.app/user/lactures');
+  //     const items = response.data;
+      
+  //     // Print items to the console
+  //     console.log('Items:', items);
+  //   } catch (error) {
+  //     console.error('There was a problem with the fetch operation:', error);
+  //   }
+    
+})
 
 onUnmounted(() => {
         store.completeLecture();

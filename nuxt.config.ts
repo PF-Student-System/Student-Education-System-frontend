@@ -13,4 +13,12 @@ export default defineNuxtConfig({
       ],
     },
   },
+
+  runtimeConfig:{
+    public: {
+      clientId: process.env.CLientId,
+      clientSecret : process.env.Client_Secret, 
+    }
+  },
+
 });
