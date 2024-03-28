@@ -85,7 +85,7 @@ function captureImage() {
 
 const apicall = async (imageDataUrl) => {
   const res = await $fetch(
-    "https://6418-202-163-113-83.ngrok-free.app/users/register",
+    "https://8c77-202-163-113-83.ngrok-free.app/users/register",
     {
       method: "post",
       body: {

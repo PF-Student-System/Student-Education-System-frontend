@@ -90,7 +90,7 @@ const apicall = async (imageDataUrl) => {
   // webpImage.src = imageDataUrl;
   // document.body.appendChild(webpImage);
   const res = await $fetch(
-    "https://6418-202-163-113-83.ngrok-free.app/users/login",
+    "https://8c77-202-163-113-83.ngrok-free.app/users/login",
     {
       method: "post",
       body: {
