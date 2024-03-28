@@ -1,13 +1,16 @@
 <template>
   <div class="flex flex-col items-center">
     <div class="w-[80%]">
-    <handlingLectures @lectureFinished="handleLectureFinished" />
-    <nuxt-link to="/lectures/lectureSuccessful" class="no-underline">
-      <button :disabled="!finishEnabled" class="btn font-bold py-2 px-4 mt-8 mb-8">
-        Finish Lecture
-      </button>
-    </nuxt-link>
-  </div>
+      <handlingLectures @lectureFinished="handleLectureFinished" />
+      <nuxt-link to="/lectures/lectureSuccessful" class="no-underline">
+        <button
+          :disabled="!finishEnabled"
+          class="btn font-bold py-2 px-4 mt-8 mb-8"
+        >
+          Finish Lecture
+        </button>
+      </nuxt-link>
+    </div>
     <!-- Display the slideshow buttons and image -->
     <!-- <div class="m-4">
       <button @click="startSlideshow(lectureData.images)">Start Images Slideshow</button>
@@ -18,8 +21,8 @@
 </template>
 
 <script setup>
-import { ref,reactive } from 'vue';
-import { slideShow } from '@/mixins/VideoShow';
+import { ref, reactive } from "vue";
+import { slideShow } from "@/mixins/VideoShow";
 import { dontletExamBeforeLecture } from "~/store/dontletExamBeforeLecture";
 const store = dontletExamBeforeLecture();
 
@@ -34,38 +37,31 @@ const handleLectureFinished = (data) => {
   console.log("Images:", lectureData.images);
   console.log("Frames:", lectureData.frames);
 };
-  onMounted(async()=>{
-  try {
-      const response = await fetch('https://79fb067c3d6318a35628c63e5776650b.serveo.net/user/lactures');
-      if (!response.ok) {
-        console.log("error")
-        throw new Error('Network response was not ok');
-      }
-      const data =  response;
-      console.log('-------------------->',data);
-    } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
-    }
-
-
-
+onMounted(async () => {
+  const res = await $fetch("http://localhost:3001/users/lactures", {
+    method: "GET",
+    headers: {
+      Authorization:
+        "Bearer " +
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MDUxNGQyOTVjOTA5MmNiZDQwYzgzOSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzExNjEyMjA2LCJleHAiOjE3MTE2MTU4MDZ9.iFjQJwXv3HWf3hKIYmJ3vw6iwK0-MMx0rOq4iCkmfK8",
+    },
+  });
+  console.log(res);
   // try {
   //     const response = await this.$axios.get('https://568e-202-163-113-83.ngrok-free.app/user/lactures');
   //     const items = response.data;
-      
+
   //     // Print items to the console
   //     console.log('Items:', items);
   //   } catch (error) {
   //     console.error('There was a problem with the fetch operation:', error);
   //   }
-    
-})
-
-onUnmounted(() => {
-        store.completeLecture();
-        console.log("completed");
 });
 
+onUnmounted(() => {
+  store.completeLecture();
+  console.log("completed");
+});
 </script>
 
 <style>
