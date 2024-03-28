@@ -14,9 +14,9 @@
           </label>
           <div class="flex items-center">
             <span class="text-white ml-2 px-5">John Doe</span>
-            <div @click="togglemousein" class="flex">
+            <div @click="togglemouse" class="flex">
               <img
-                src="/Img.jpeg"
+                src="/assets/images/user.png"
                 alt="Profile"
                 class="h-8 w-8 rounded-full bg-white"
               />
@@ -33,15 +33,16 @@
           </div>
           <!-- Dropdown Menu -->
           <div
-            v-show="dropdownOpen"
+            v-if="dropdownOpen"
             ref="dropdownMenu"
             id="dropdown-menu"
+            
             class="dropdown-menu absolute right-0 mt-[109px] w-48 bg-white rounded-md shadow-lg z-10"
           >
             <NuxtLink
               to="/"
               class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-              @click="togglemouseout"
+              @click="togglemouse"
               >Home</NuxtLink
             >
           </div>
@@ -53,19 +54,14 @@
 
 <script>
 import { ref } from "vue";
-
 export default {
   setup() {
     const dropdownOpen = ref(false);
 
-    const togglemousein = () => {
-      dropdownOpen.value = true;
+    const togglemouse = () => {
+      dropdownOpen.value = !dropdownOpen.value;
     };
-    const togglemouseout = () => {
-      dropdownOpen.value = false;
-    };
-
-    return { dropdownOpen, togglemousein, togglemouseout };
+    return { dropdownOpen, togglemouse };
   },
 };
 </script>

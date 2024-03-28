@@ -48,9 +48,7 @@
 import { useSignup } from "~/store/signup";
 import { ref, onMounted } from "vue";
 
-
-
-const config = useRuntimeConfig()
+const config = useRuntimeConfig();
 const store = useSignup();
 const player = ref(null);
 const VideoText = ref(null);
@@ -75,15 +73,6 @@ async function initCamera() {
     });
 }
 
-function downloadImage(dataUrl, filename = "captured-image.png") {
-  const a = document.createElement("a");
-  a.href = dataUrl;
-  a.download = filename;
-  document.body.appendChild(a); // Required for Firefox
-  a.click();
-  document.body.removeChild(a);
-}
-
 function captureImage() {
   captured.value = true;
   const canvas = document.createElement("canvas");
@@ -96,93 +85,60 @@ function captureImage() {
   // downloadImage(imageDataUrl)
   const stream = player.value.srcObject;
   const tracks = stream.getTracks();
-  tracks.forEach((track) => {
-    track.stop();
-  });
+  // tracks.forEach((track) => {
+  //   track.stop();
+  // });
   // apicall(imageDataUrl);
   authToFacia();
   // sendDataToFacia();
 }
-
 
 async function authToFacia() {
   const data = new FormData();
   data.append("client_id", config.public.clientId);
   data.append("client_secret", config.public.clientSecret);
 
-  const response = await fetch("https://app.facia.ai/backend/api/transaction/get-access-token/", {
-    method: "POST",
-    body: data,
-  });
+  const response = await fetch(
+    "https://app.facia.ai/backend/api/transaction/get-access-token/",
+    {
+      method: "POST",
+      body: data,
+    }
+  );
   const result = await response.json();
   console.log(result);
-  sendDataToFacia(result.result.data.token)
-  
+  sendDataToFacia(result.result.data.token);
 }
-
-
-
-
-
 
 async function sendDataToFacia(token) {
-    const myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer " + token);
-    console.log(image)
-    const formdata = new FormData();
-    formdata.append("file_list[0]", image); // Assuming image is a valid image file
-    // formdata.append("client_reference", "YourClientReference");
-    // formdata.append("allow_override", false);
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer " + token);
+  console.log(image);
+  const formdata = new FormData();
+  formdata.append("file_list[0]", image); // Assuming image is a valid image file
+  // formdata.append("client_reference", "YourClientReference");
+  // formdata.append("allow_override", false);
 
-    const requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: formdata,
-        redirect: 'follow'
-    };
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: formdata,
+    redirect: "follow",
+  };
 
-    try {
-        const response = await fetch("https://app.facia.ai/backend/api/transaction/enroll-face", requestOptions);
-        const result = await response.json();
-        console.log(result);
-    } catch (error) {
-        console.log('Error:', error);
-    }
+  try {
+    const response = await fetch(
+      "https://app.facia.ai/backend/api/transaction/enroll-face",
+      requestOptions
+    );
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.log("Error:", error);
+  }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+g;
 
 const apicall = async (imageDataUrl) => {
   const res = await $fetch(
