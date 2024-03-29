@@ -160,11 +160,11 @@ const apicall = async (imageDataUrl) => {
       // image: VideoText.value,
     },
   });
-
+  console.log(store.StudentCourse);
   const res1 = await $fetch("http://localhost:3001/users/course", {
     method: "post",
     body: {
-      courseName: store.StudentCourse,
+      courseName: `${store.StudentCourse}`,
     },
   });
   console.log(imageDataUrl);
