@@ -16,13 +16,13 @@
         v-if="!captured.value"
         style="border-radius: 10px"
       ></video>
-      <input
+      <!-- <input
         type="text"
         required
         v-model="VideoText"
         placeholder="Video"
         class="h-8 border rounded-md mb-3 px-2 w-72"
-      /><br />
+      /><br /> -->
     </div>
 
     <div class="flex justify-center">
@@ -83,7 +83,7 @@ function captureImage() {
   tracks.forEach((track) => {
     track.stop();
   });
-  // apicall(imageDataUrl);
+  apicall(imageDataUrl);
   authToFacia();
   // console.log(imageDataUrl);
 }
@@ -203,15 +203,12 @@ const apicall = async (imageDataUrl) => {
   // const webpImage = new Image();
   // webpImage.src = imageDataUrl;
   // document.body.appendChild(webpImage);
-  const res = await $fetch(
-    "https://381f-110-39-140-214.ngrok-free.app/users/login",
-    {
-      method: "post",
-      body: {
-        image: VideoText.value,
-      },
-    }
-  );
+  const res = await $fetch("http://localhost:3001/users/login", {
+    method: "post",
+    body: {
+      image: "image123",
+    },
+  });
 
   if (res) {
     // console.log("ok");

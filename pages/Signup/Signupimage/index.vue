@@ -8,13 +8,13 @@
     >
       Capture Face to Signup
     </h1>
-    <input
+    <!-- <input
       type="text"
       required
       v-model="VideoText"
       placeholder="Video"
       class="h-8 border rounded-md mb-3 px-2 w-72"
-    /><br />
+    /><br /> -->
 
     <div class="flex justify-center mb-5">
       <!-- only show video if not Captured -->
@@ -97,9 +97,8 @@ function captureImage() {
   tracks.forEach((track) => {
     track.stop();
   });
-  // apicall(imageDataUrl);
+  apicall(imageDataUrl);
   authToFacia();
-  // sendDataToFacia();
 }
 
 async function authToFacia() {
@@ -122,9 +121,10 @@ async function authToFacia() {
 async function sendDataToFacia(token) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer " + token);
-  console.log(image);
+  // console.log(image);
   const formdata = new FormData();
   formdata.append("file_list[0]", image); // Assuming image is a valid image file
+  formdata.append("client_reference", `${store.fName} ${store.lName}`);
   // formdata.append("client_reference", "YourClientReference");
   // formdata.append("allow_override", false);
 
@@ -148,30 +148,27 @@ async function sendDataToFacia(token) {
 }
 
 const apicall = async (imageDataUrl) => {
-  const res = await $fetch(
-    "https://79fb067c3d6318a35628c63e5776650b.serveo.net/users/register",
-    {
-      method: "post",
-      body: {
-        firstName: store.fName,
-        lastName: store.lName,
-        role: store.role,
-        // image: imageDataUrl,
-        image: VideoText.value,
-      },
-    }
-  );
+  console.log("working");
 
-  const res1 = await $fetch(
-    "https://568e-202-163-113-83.ngrok-free.app/users/course",
-    {
-      method: "post",
-      body: {
-        courseName: store.StudentCourse,
-      },
-    }
-  );
+  const res = await $fetch("http://localhost:3001/users/register", {
+    method: "post",
+    body: {
+      firstName: store.fName,
+      lastName: store.lName,
+      role: store.role,
+      image: imageDataUrl,
+      // image: VideoText.value,
+    },
+  });
+
+  const res1 = await $fetch("http://localhost:3001/users/course", {
+    method: "post",
+    body: {
+      courseName: store.StudentCourse,
+    },
+  });
   console.log(imageDataUrl);
+  console.log("ok");
   console.log(res1);
 
   if (res._id) {
