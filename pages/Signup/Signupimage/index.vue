@@ -3,18 +3,18 @@
 
   <div class="bg-white py-4">
     <h1
-      style="text-align: center;"
+      style="text-align: center"
       class="text-customgreen text-lg font-bold mr-4 mb-5"
     >
       Capture Face to Signup
     </h1>
-    <input
+    <!-- <input
       type="text"
       required
       v-model="VideoText"
       placeholder="Video"
       class="h-8 border rounded-md mb-3 px-2 w-72"
-    /><br />
+    /><br /> -->
 
     <div class="flex justify-center mb-5">
       <!-- only show video if not Captured -->
@@ -23,7 +23,7 @@
         ref="player"
         autoplay
         v-if="!captured.value"
-        style="border-radius: 10px;"
+        style="border-radius: 10px"
       ></video>
     </div>
     <div class="flex justify-center">
@@ -48,9 +48,7 @@
 import { useSignup } from "~/store/signup";
 import { ref, onMounted } from "vue";
 
-
-
-const config = useRuntimeConfig()
+const config = useRuntimeConfig();
 const store = useSignup();
 const player = ref(null);
 const VideoText = ref(null);
@@ -99,116 +97,78 @@ function captureImage() {
   tracks.forEach((track) => {
     track.stop();
   });
-  // apicall(imageDataUrl);
+  apicall(imageDataUrl);
   authToFacia();
-  // sendDataToFacia();
 }
-
 
 async function authToFacia() {
   const data = new FormData();
   data.append("client_id", config.public.clientId);
   data.append("client_secret", config.public.clientSecret);
 
-  const response = await fetch("https://app.facia.ai/backend/api/transaction/get-access-token/", {
-    method: "POST",
-    body: data,
-  });
+  const response = await fetch(
+    "https://app.facia.ai/backend/api/transaction/get-access-token/",
+    {
+      method: "POST",
+      body: data,
+    }
+  );
   const result = await response.json();
   console.log(result);
-  sendDataToFacia(result.result.data.token)
-  
+  sendDataToFacia(result.result.data.token);
 }
-
-
-
-
-
 
 async function sendDataToFacia(token) {
-    const myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer " + token);
-    console.log(image)
-    const formdata = new FormData();
-    formdata.append("file_list[0]", image); // Assuming image is a valid image file
-    // formdata.append("client_reference", "YourClientReference");
-    // formdata.append("allow_override", false);
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer " + token);
+  // console.log(image);
+  const formdata = new FormData();
+  formdata.append("file_list[0]", image); // Assuming image is a valid image file
+  formdata.append("client_reference", `${store.fName} ${store.lName}`);
+  // formdata.append("client_reference", "YourClientReference");
+  // formdata.append("allow_override", false);
 
-    const requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: formdata,
-        redirect: 'follow'
-    };
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: formdata,
+    redirect: "follow",
+  };
 
-    try {
-        const response = await fetch("https://app.facia.ai/backend/api/transaction/enroll-face", requestOptions);
-        const result = await response.json();
-        console.log(result);
-    } catch (error) {
-        console.log('Error:', error);
-    }
+  try {
+    const response = await fetch(
+      "https://app.facia.ai/backend/api/transaction/enroll-face",
+      requestOptions
+    );
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.log("Error:", error);
+  }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const apicall = async (imageDataUrl) => {
-  const res = await $fetch(
-    "https://79fb067c3d6318a35628c63e5776650b.serveo.net/users/register",
-    {
-      method: "post",
-      body: {
-        firstName: store.fName,
-        lastName: store.lName,
-        role: store.role,
-        // image: imageDataUrl,
-        image: VideoText.value,
-      },
-    }
-  );
+  console.log("working");
 
-  const res1 = await $fetch(
-    "https://568e-202-163-113-83.ngrok-free.app/users/course",
-    {
-      method: "post",
-      body: {
-        courseName: store.StudentCourse,
-      },
-    }
-  );
+  const res = await $fetch("http://localhost:3001/users/register", {
+    method: "post",
+    body: {
+      firstName: store.fName,
+      lastName: store.lName,
+      role: store.role,
+      image: imageDataUrl,
+      // image: VideoText.value,
+    },
+  });
+
+  const res1 = await $fetch("http://localhost:3001/users/course", {
+    method: "post",
+    body: {
+      courseName: store.StudentCourse,
+    },
+  });
   console.log(imageDataUrl);
+  console.log("ok");
   console.log(res1);
 
   if (res._id) {

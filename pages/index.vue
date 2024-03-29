@@ -16,13 +16,13 @@
         v-if="!captured.value"
         style="border-radius: 10px"
       ></video>
-      <input
-          type="text"
-          required
-          v-model="VideoText"
-          placeholder="Video"
-          class="h-8 border rounded-md mb-3 px-2 w-72"
-        /><br />
+      <!-- <input
+        type="text"
+        required
+        v-model="VideoText"
+        placeholder="Video"
+        class="h-8 border rounded-md mb-3 px-2 w-72"
+      /><br /> -->
     </div>
 
     <div class="flex justify-center">
@@ -45,8 +45,7 @@
 import { ref, onMounted } from "vue";
 import pako from "pako";
 
-
-const config = useRuntimeConfig()
+const config = useRuntimeConfig();
 const VideoText = ref(null);
 const player = ref(null);
 let image = ref(false); // Use ref(null) to correctly initialize the canvas
@@ -61,13 +60,13 @@ const constraints = {
 
 async function initCamera() {
   navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then((stream) => {
-          player.value.srcObject = stream;
-        })
-        .catch((error) => {
-          console.error("Error accessing webcam:", error);
-        });
+    .getUserMedia({ video: true })
+    .then((stream) => {
+      player.value.srcObject = stream;
+    })
+    .catch((error) => {
+      console.error("Error accessing webcam:", error);
+    });
 }
 
 function captureImage() {
@@ -84,131 +83,116 @@ function captureImage() {
   tracks.forEach((track) => {
     track.stop();
   });
-  // apicall(imageDataUrl);
+  apicall(imageDataUrl);
   authToFacia();
   // console.log(imageDataUrl);
 }
 onMounted(() => {
-  
   initCamera();
 });
-
-
 
 async function authToFacia() {
   const data = new FormData();
   data.append("client_id", config.public.clientId);
   data.append("client_secret", config.public.clientSecret);
 
-  const response = await fetch("https://app.facia.ai/backend/api/transaction/get-access-token/", {
-    method: "POST",
-    body: data,
-  });
+  const response = await fetch(
+    "https://app.facia.ai/backend/api/transaction/get-access-token/",
+    {
+      method: "POST",
+      body: data,
+    }
+  );
   const result = await response.json();
   console.log(result);
-  createTransactionFacia(result.result.data.token)
+  createTransactionFacia(result.result.data.token);
   // sendDataToFacia(result.result.data.token)
 }
 
 async function createTransactionFacia(token) {
-var myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer "+ token);
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer " + token);
 
-var formdata = new FormData();
-formdata.append("type", "face_search");
-formdata.append("file", image);
+  var formdata = new FormData();
+  formdata.append("type", "face_search");
+  formdata.append("file", image);
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: formdata,
-  redirect: 'follow'
-};
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: formdata,
+    redirect: "follow",
+  };
 
-fetch("https://app.facia.ai/backend/api/transaction/create-transaction", requestOptions)
-  .then(response => response.text())
-  .then(result => {
-    let data = JSON.parse(result)
-    console.log(data)
-    console.log('-------->',data.result.data.reference_id)
-    faciaFaceSearch(token, data.result.data.reference_id);
-  })
-  .catch(error => console.log('error', error));
-    
+  fetch(
+    "https://app.facia.ai/backend/api/transaction/create-transaction",
+    requestOptions
+  )
+    .then((response) => response.text())
+    .then((result) => {
+      let data = JSON.parse(result);
+      console.log(data);
+      console.log("-------->", data.result.data.reference_id);
+      faciaFaceSearch(token, data.result.data.reference_id);
+    })
+    .catch((error) => console.log("error", error));
 }
 
+async function faciaFaceSearch(token, reference_id) {
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer " + token);
 
+  var formdata = new FormData();
+  formdata.append("reference_id", reference_id);
 
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: formdata,
+    redirect: "follow",
+  };
+  console.log("hello");
 
-
-async function faciaFaceSearch(token , reference_id) {
-var myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer "+ token);
-
-var formdata = new FormData();
-formdata.append("reference_id", reference_id);
-
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: formdata,
-  redirect: 'follow'
-};
-console.log("hello")
-
-fetch("https://app.facia.ai/backend/api/transaction/face-search-result", requestOptions)
-  .then(response => response.text())
-  .then(
-    result => {
-    let data1 = result
-    data1 = JSON.parse(data1);
-    console.log('-------->',data1)
-})
-  .catch(error => console.log('error', error));
-
-
+  fetch(
+    "https://app.facia.ai/backend/api/transaction/face-search-result",
+    requestOptions
+  )
+    .then((response) => response.text())
+    .then((result) => {
+      let data1 = result;
+      data1 = JSON.parse(data1);
+      console.log("-------->", data1);
+    })
+    .catch((error) => console.log("error", error));
 }
-
-
-
-
-
-
 
 async function sendDataToFacia(token) {
-    const myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer " + token);
-    console.log(image)
-    const formdata = new FormData();
-    formdata.append("file_list[0]", image); // Assuming image is a valid image file
-    // formdata.append("client_reference", "YourClientReference");
-    // formdata.append("allow_override", false);
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer " + token);
+  console.log(image);
+  const formdata = new FormData();
+  formdata.append("file_list[0]", image); // Assuming image is a valid image file
+  // formdata.append("client_reference", "YourClientReference");
+  // formdata.append("allow_override", false);
 
-    const requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: formdata,
-        redirect: 'follow'
-    };
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: formdata,
+    redirect: "follow",
+  };
 
-    try {
-        const response = await fetch("https://app.facia.ai/backend/api/transaction/enroll-face", requestOptions);
-        const result = await response.json();
-        console.log(result);
-    } catch (error) {
-        console.log('Error:', error);
-    }
+  try {
+    const response = await fetch(
+      "https://app.facia.ai/backend/api/transaction/enroll-face",
+      requestOptions
+    );
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.log("Error:", error);
+  }
 }
-
-
-
-
-
-
-
-
-
-
 
 const apicall = async (imageDataUrl) => {
   const compressedData = pako.gzip(imageDataUrl);
@@ -219,19 +203,16 @@ const apicall = async (imageDataUrl) => {
   // const webpImage = new Image();
   // webpImage.src = imageDataUrl;
   // document.body.appendChild(webpImage);
-  const res = await $fetch(
-    "https://381f-110-39-140-214.ngrok-free.app/users/login",
-    {
-      method: "post",
-      body: {
-        image: VideoText.value,
-      },
-    }
-  );
+  const res = await $fetch("http://localhost:3001/users/login", {
+    method: "post",
+    body: {
+      image: "image123",
+    },
+  });
 
   if (res) {
     // console.log("ok");
-    console.log(res)
+    console.log(res);
     if (res.message) {
       console.log(res.message);
       navigateTo("/signup");
