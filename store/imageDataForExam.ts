@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-// import { Ref } from "vue";
 
 interface ImageExamsStore {
   imgArrayWebShots: Ref<any[]>;
@@ -11,10 +10,17 @@ export const useImageExams = defineStore("imageDataForExam", () => {
   const imgArrayWebShots: Ref<any[]> = ref([]);
   const imgArrayCamShots: Ref<any[]> = ref([]);
 
-  function imageDataSavingToPinia(arrWebShots: any[], arrCamShots: any[]): void {
+  function imageDataSavingToPinia(
+    arrWebShots: any[],
+    arrCamShots: any[]
+  ): void {
     imgArrayWebShots.value = arrWebShots;
     imgArrayCamShots.value = arrCamShots;
   }
 
-  return { imageDataSavingToPinia, imgArrayWebShots, imgArrayCamShots } as ImageExamsStore;
+  return {
+    imageDataSavingToPinia,
+    imgArrayWebShots,
+    imgArrayCamShots,
+  } as ImageExamsStore;
 });

@@ -53,7 +53,8 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import pako from "pako";
-
+import { useAuth } from "~/store/auth";
+const store = useAuth();
 const config = useRuntimeConfig();
 const Firstname = ref(null);
 
@@ -90,12 +91,12 @@ function captureImage() {
   image = imageDataUrl;
   const stream = player.value.srcObject;
   const tracks = stream.getTracks();
-  // tracks.forEach((track) => {
-  //   track.stop();
-  // });
-  // apicall(imageDataUrl);
+  tracks.forEach((track) => {
+    track.stop();
+  });
+
+  apicall(imageDataUrl);
   authToFacia();
-  // console.log(imageDataUrl);
 }
 onMounted(() => {
   initCamera();
@@ -106,12 +107,14 @@ async function authToFacia() {
   data.append("client_id", config.public.clientId);
   data.append("client_secret", config.public.clientSecret);
 
-  const response = await fetch("https://app.facia.ai/backend/api/transaction/get-access-token", {
-    method: "POST",
-    body: data,
-  });
+  const response = await fetch(
+    "https://app.facia.ai/backend/api/transaction/get-access-token",
+    {
+      method: "POST",
+      body: data,
+    }
+  );
   const result = await response.json();
-  console.log(result);
   createTransactionFacia(result.result.data.token);
   // sendDataToFacia(result.result.data.token)
 }
@@ -138,8 +141,7 @@ async function createTransactionFacia(token) {
     .then((response) => response.text())
     .then((result) => {
       let data = JSON.parse(result);
-      console.log(data);
-      console.log("-------->", data.result.data.reference_id);
+
       faciaFaceSearch(token, data.result.data.reference_id);
     })
     .catch((error) => console.log("error", error));
@@ -158,7 +160,6 @@ async function faciaFaceSearch(token, reference_id) {
     body: formdata,
     redirect: "follow",
   };
-  console.log("hello");
 
   fetch(
     "https://app.facia.ai/backend/api/transaction/face-search-result",
@@ -168,7 +169,6 @@ async function faciaFaceSearch(token, reference_id) {
     .then((result) => {
       let data1 = result;
       data1 = JSON.parse(data1);
-      console.log("-------->", data1);
     })
     .catch((error) => console.log("error", error));
 }
@@ -176,11 +176,8 @@ async function faciaFaceSearch(token, reference_id) {
 async function sendDataToFacia(token) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer " + token);
-  console.log(image);
   const formdata = new FormData();
-  formdata.append("file_list[0]", image); // Assuming image is a valid image file
-  // formdata.append("client_reference", "YourClientReference");
-  // formdata.append("allow_override", false);
+  formdata.append("file_list[0]", image);
 
   const requestOptions = {
     method: "POST",
@@ -195,7 +192,6 @@ async function sendDataToFacia(token) {
       requestOptions
     );
     const result = await response.json();
-    console.log(result);
   } catch (error) {
     console.log("Error:", error);
   }
@@ -206,11 +202,6 @@ const apicall = async (imageDataUrl) => {
   const compressedBase64 = btoa(
     String.fromCharCode.apply(null, compressedData)
   );
-  console.log(compressedBase64);
-  // const webpImage = new Image();
-  // webpImage.src = imageDataUrl;
-  // document.body.appendChild(webpImage);
-  console.log(Firstname.value);
   const res = await $fetch("http://localhost:3001/users/login", {
     method: "post",
     body: {
@@ -219,10 +210,8 @@ const apicall = async (imageDataUrl) => {
   });
 
   if (res) {
-    // console.log("ok");
-    console.log(res);
+    store.login(res.token);
     if (res.message) {
-      console.log(res.message);
       navigateTo("/signup");
     } else {
       if (res.user.role === "teacher") {

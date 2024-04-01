@@ -1,12 +1,16 @@
 import { defineStore } from "pinia";
-// import { Ref } from "vue";
 
 interface SignupStore {
   fName: Ref<string | null>;
   lName: Ref<string | null>;
   role: Ref<string | null>;
   StudentCourse: Ref<string | null>;
-  set: (f: string | null, l: string | null, r: string | null , s:string | null) => void;
+  set: (
+    f: string | null,
+    l: string | null,
+    r: string | null,
+    s: string | null
+  ) => void;
 }
 
 export const useSignup = defineStore("signup", () => {
@@ -15,8 +19,12 @@ export const useSignup = defineStore("signup", () => {
   const role: Ref<string | null> = ref(null);
   const StudentCourse: Ref<string | null> = ref(null);
 
-
-  function set(f: string | null, l: string | null, r: string | null, s:string | null): void {
+  function set(
+    f: string | null,
+    l: string | null,
+    r: string | null,
+    s: string | null
+  ): void {
     fName.value = f;
     lName.value = l;
     role.value = r;

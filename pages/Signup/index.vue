@@ -21,8 +21,7 @@
           class="h-8 border rounded-md px-2 w-72 mb-5"
         />
         <br />
-        <!-- <select required @change="(event) => {
-          user.usertype = event.target.value;}" -->
+
         <select
           required
           v-model="user.usertype"
@@ -38,7 +37,6 @@
           v-model="user.StudentCourse"
           class="h-8 border rounded-md px-2 w-full mb-5 class='text-customgreen'"
         >
-          <!-- <option value="" >Select Courses</option> -->
           <option value="Maths">Maths</option>
         </select>
         <button
@@ -52,10 +50,7 @@
   </div>
 </template>
 <script setup lang="ts">
-//importing store
 import { useSignup } from "~/store/signup";
-// import { reactive, computed } from "vue";
-//storing it in a variable
 const store = useSignup();
 export interface user {
   firstname: String;
@@ -74,19 +69,13 @@ const userStudentType = ref(null);
 const router = useRouter();
 const isValidFirstName = computed(() => user.firstname.length >= 3);
 const isValidLastName = computed(() => user.lastname.length >= 3);
-//const isValidUserType = computed(() => user.usertype.length >0);
+
 const isFormValid = computed(
   () => isValidFirstName.value && isValidLastName.value
 );
 
 const handleSubmit = () => {
-  //setting the values in the store
-  console.log(user.StudentCourses);
   store.set(user.firstname, user.lastname, user.usertype, user.StudentCourse);
   navigateTo("signup/signupimage");
-  // router.push("Signup/Signupimage");
 };
-
-// function steptwo(){
-const steptwo = () => {};
 </script>
