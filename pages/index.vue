@@ -33,6 +33,8 @@
         placeholder="First Name"
         class="h-8 border rounded-md mb-3 px-2 w-72"
       />
+    </div>
+    <div class="flex justify-center">
       <button
         class="btn hover:btnHover text-lg font-semibold w-72 mt-2"
         @click="captureImage"
