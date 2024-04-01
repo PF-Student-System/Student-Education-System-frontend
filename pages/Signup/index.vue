@@ -81,6 +81,7 @@ const isFormValid = computed(
 
 const handleSubmit = () => {
   //setting the values in the store
+  console.log(user.StudentCourses);
   store.set(user.firstname, user.lastname, user.usertype, user.StudentCourse);
   navigateTo("signup/signupimage");
   // router.push("Signup/Signupimage");

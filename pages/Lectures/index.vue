@@ -38,19 +38,18 @@ const handleLectureFinished = (data) => {
   console.log("Frames:", lectureData.frames);
 };
 onMounted(async () => {
-  const res = await $fetch("http://localhost:3001/users/lactures", {
-    method: "GET",
-    headers: {
-      Authorization:
-        "Bearer " +
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MDUxNGQyOTVjOTA5MmNiZDQwYzgzOSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzExNjEyMjA2LCJleHAiOjE3MTE2MTU4MDZ9.iFjQJwXv3HWf3hKIYmJ3vw6iwK0-MMx0rOq4iCkmfK8",
-    },
-  });
-  console.log(res);
+  // const res = await $fetch("http://localhost:3001/user/lactures", {
+  //   method: "GET",
+  //   headers: {
+  //     Authorization:
+  //       "Bearer " +
+  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MDY1NjAzZWM0MmY4NDE1MDcwMWJlYiIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzExNjk5ODkwLCJleHAiOjE3MTE3MDM0OTB9.UGT5kFzoLgegnV2U7-_xYCNTMvmr_sxnd3SyHfw3O44",
+  //   },
+  // });
+  // console.log(res.JSON.lacture);
   // try {
   //     const response = await this.$axios.get('https://568e-202-163-113-83.ngrok-free.app/user/lactures');
   //     const items = response.data;
-
   //     // Print items to the console
   //     console.log('Items:', items);
   //   } catch (error) {

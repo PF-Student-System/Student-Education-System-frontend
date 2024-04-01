@@ -26,6 +26,13 @@
     </div>
 
     <div class="flex justify-center">
+      <input
+        type="text"
+        required
+        v-model="Firstname"
+        placeholder="First Name"
+        class="h-8 border rounded-md mb-3 px-2 w-72"
+      />
       <button
         class="btn hover:btnHover text-lg font-semibold w-72 mt-2"
         @click="captureImage"
@@ -46,7 +53,8 @@ import { ref, onMounted } from "vue";
 import pako from "pako";
 
 const config = useRuntimeConfig();
-const VideoText = ref(null);
+const Firstname = ref(null);
+
 const player = ref(null);
 let image = ref(false); // Use ref(null) to correctly initialize the canvas
 const captured = ref(false); // State to control the visibility of video/canvas
@@ -203,10 +211,11 @@ const apicall = async (imageDataUrl) => {
   // const webpImage = new Image();
   // webpImage.src = imageDataUrl;
   // document.body.appendChild(webpImage);
+  console.log(Firstname.value);
   const res = await $fetch("http://localhost:3001/users/login", {
     method: "post",
     body: {
-      image: "image123",
+      firstName: `${Firstname.value}`,
     },
   });
 
