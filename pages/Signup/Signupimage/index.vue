@@ -73,15 +73,6 @@ async function initCamera() {
     });
 }
 
-function downloadImage(dataUrl, filename = "captured-image.png") {
-  const a = document.createElement("a");
-  a.href = dataUrl;
-  a.download = filename;
-  document.body.appendChild(a); // Required for Firefox
-  a.click();
-  document.body.removeChild(a);
-}
-
 function captureImage() {
   captured.value = true;
   const canvas = document.createElement("canvas");
@@ -94,10 +85,10 @@ function captureImage() {
   // downloadImage(imageDataUrl)
   const stream = player.value.srcObject;
   const tracks = stream.getTracks();
-  tracks.forEach((track) => {
-    track.stop();
-  });
-  apicall(imageDataUrl);
+  // tracks.forEach((track) => {
+  //   track.stop();
+  // });
+  // apicall(imageDataUrl);
   authToFacia();
 }
 
@@ -116,15 +107,15 @@ async function authToFacia() {
   const result = await response.json();
   console.log(result);
   sendDataToFacia(result.result.data.token);
+  sendDataToFacia(result.result.data.token);
 }
 
 async function sendDataToFacia(token) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer " + token);
-  // console.log(image);
+  console.log(image);
   const formdata = new FormData();
   formdata.append("file_list[0]", image); // Assuming image is a valid image file
-  formdata.append("client_reference", `${store.fName} ${store.lName}`);
   // formdata.append("client_reference", "YourClientReference");
   // formdata.append("allow_override", false);
 
@@ -145,7 +136,19 @@ async function sendDataToFacia(token) {
   } catch (error) {
     console.log("Error:", error);
   }
+  try {
+    const response = await fetch(
+      "https://app.facia.ai/backend/api/transaction/enroll-face",
+      requestOptions
+    );
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.log("Error:", error);
+  }
 }
+
+g;
 
 const apicall = async (imageDataUrl) => {
   console.log("working");

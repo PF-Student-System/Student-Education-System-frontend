@@ -7,7 +7,7 @@ interface LectureStore {
 }
 
 export const dontletExamBeforeLecture = defineStore("dontletExamBeforeLecture", () => {
-  const lectureCompleted: Ref<boolean> = ref(false);
+  const lectureCompleted: Ref<boolean> = ref(true);
 
   function completeLecture(): void {
     lectureCompleted.value = true;
