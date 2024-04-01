@@ -9,7 +9,7 @@
 <script>
 export default {
   // Your script logic here
-}
+};
 </script>
 
 <style>

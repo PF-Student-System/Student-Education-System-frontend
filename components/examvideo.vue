@@ -25,7 +25,7 @@ onMounted(() => {
     console.error("Canvas context is not supported.");
   }
 
-  canvas.width = 500; // Adjust canvas dimensions as needed
+  canvas.width = 500;
   canvas.height = 300;
 
   const mediaRecorder = new MediaRecorder(canvas.captureStream(), {
@@ -57,14 +57,13 @@ onMounted(() => {
       image.onload = () => {
         ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
         currentIndex++;
-        setTimeout(renderNextFrame, 500); // Delay between frames
+        setTimeout(renderNextFrame, 500);
       };
       image.src = base64Images[currentIndex];
     } else {
       setTimeout(() => {
         mediaRecorder.stop();
       }, 1000);
-      // Wait for final frame to render before stopping
     }
   };
 
@@ -74,8 +73,8 @@ onMounted(() => {
 
 <style scoped>
 .loader {
-  border: 10px solid #0f172a; /* Light grey */
-  border-top: 10px solid #00c16a; /* Blue */
+  border: 10px solid #0f172a;
+  border-top: 10px solid #00c16a;
   border-right: 10px solid #00c16a;
   border-bottom: 10px solid #00c16a;
   border-radius: 90%;

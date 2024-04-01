@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-// import { Ref } from "vue";
 
 interface AuthStore {
   auth: Ref<boolean>;

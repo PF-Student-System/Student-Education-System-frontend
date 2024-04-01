@@ -1,4 +1,3 @@
-
 export default function camScreenshot() {
   let intervalId: NodeJS.Timeout | null;
   let counter = 1;
@@ -30,7 +29,7 @@ export default function camScreenshot() {
         imagearray.push(imageDataURL);
         counter++;
         stream.getTracks().forEach((track) => track.stop());
-        // console.log(imagearray)
+        console.log(imagearray);
       };
       video.play();
     } catch (error) {

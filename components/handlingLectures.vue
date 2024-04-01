@@ -24,7 +24,7 @@ const store = useAuth();
 const videoPlayer = ref(null);
 const loaded = ref(false);
 let link = "";
-// const videoRef=ref(null);
+
 const emits = defineEmits(["lectureFinished"]);
 
 const { takeScreenshot, stopCaptureScreenshot, frames } = screenshot();
@@ -47,11 +47,9 @@ onMounted(async () => {
 });
 
 const handleVideoEnd = () => {
-  // Stop capturing when the lecture ends
   stopCapture();
   stopCaptureScreenshot();
 
-  // Emitting the event with images and frames
   emits("lectureFinished", { imagearray, frames });
   console.log("frames from", frames);
   console.log("imagearray", imagearray);
@@ -60,8 +58,8 @@ const handleVideoEnd = () => {
 
 <style scoped>
 .loader {
-  border: 10px solid #0f172a; /* Light grey */
-  border-top: 10px solid #00c16a; /* Blue */
+  border: 10px solid #0f172a;
+  border-top: 10px solid #00c16a;
   border-right: 10px solid #00c16a;
   border-bottom: 10px solid #00c16a;
   border-radius: 90%;

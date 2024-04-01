@@ -33,12 +33,11 @@
 
 <script lang="ts">
 import { useMode } from "~/store/modepath";
-// import {  Ref } from 'vue';
 export default {
   setup() {
     const store = useMode();
     const mode = store.mode;
-    const isVisible = ref(true); // Controls visibility of the element
+    const isVisible = ref(true);
 
     interface Box {
       id: number;
@@ -63,7 +62,6 @@ export default {
     function startClicked() {
       disabled.value = false;
       isVisible.value = false;
-      // Hide the element
     }
 
     function boxClicked(box: Box) {
