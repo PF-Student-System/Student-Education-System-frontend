@@ -19,7 +19,8 @@
 import { ref, defineEmits, onMounted } from "vue";
 import screenshot from "@/mixins/screenshot";
 import camScreenshot from "@/mixins/camScreenshot";
-
+import { useAuth } from "@/store/auth";
+const store = useAuth();
 const videoPlayer = ref(null);
 const loaded = ref(false);
 let link = "";
@@ -29,12 +30,11 @@ const emits = defineEmits(["lectureFinished"]);
 const { takeScreenshot, stopCaptureScreenshot, frames } = screenshot();
 const { startCapture, stopCapture, imagearray } = camScreenshot();
 onBeforeMount(async () => {
+  console.log("..>>>>>>>>>>>" + store.token);
   const res = await $fetch("http://localhost:3001/user/lactures", {
     method: "GET",
     headers: {
-      Authorization:
-        "Bearer " +
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MDY1NjAzZWM0MmY4NDE1MDcwMWJlYiIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzExNzA0NTM4LCJleHAiOjE3MTE3MDgxMzh9.f3V-inAMNUeqJ3fX8iJh9kznm2A98LornGvFtRX_qnI",
+      Authorization: "Bearer " + store.token,
     },
   });
   link = res.JSON.lacture;

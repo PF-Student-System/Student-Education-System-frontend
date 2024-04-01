@@ -53,7 +53,8 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import pako from "pako";
-
+import { useAuth } from "~/store/auth";
+const store = useAuth();
 const config = useRuntimeConfig();
 const Firstname = ref(null);
 
@@ -209,7 +210,6 @@ const apicall = async (imageDataUrl) => {
   const compressedBase64 = btoa(
     String.fromCharCode.apply(null, compressedData)
   );
-  console.log(compressedBase64);
   // const webpImage = new Image();
   // webpImage.src = imageDataUrl;
   // document.body.appendChild(webpImage);
@@ -222,8 +222,7 @@ const apicall = async (imageDataUrl) => {
   });
 
   if (res) {
-    // console.log("ok");
-    console.log(res);
+    store.login(res.token);
     if (res.message) {
       console.log(res.message);
       navigateTo("/signup");
