@@ -33,6 +33,8 @@ import { myExam } from "~/utils/exam";
 import camScreenshot from "~/mixins/camScreenshot";
 import { useImageExams } from "~/store/imageDataForExam"
 const store = useImageExams();
+import { postScreenShots } from "~/mixins/postDataToApi";
+const {sendDatatoApi} = postScreenShots();
 
 const timeLeft = ref(300);
 var textColor = ref("");
@@ -94,6 +96,8 @@ onUnmounted(() => {
   window.removeEventListener('keydown', handleKeyPress);
   window.removeEventListener('click', handleMouseClick);
   store.imageDataSavingToPinia(frames ,imagearray)
+  console.log(frames);
+  sendDatatoApi(frames , imagearray);
 });
 
    const stopactions = () =>{
@@ -101,10 +105,19 @@ onUnmounted(() => {
     stopCapture();
     }
 
-onBeforeUnmount(() => {
+onBeforeUnmount(async () => {
   if (countdown) {
     clearInterval(countdown);
   }
+
+  const res = await $fetch("https://27c9-110-39-140-214.ngrok-free.app/users/exam", {
+    method: "post",
+    body: {
+        isAttempted:  true,
+        webCamScreenshots:  null,
+        windowScreenshots:  null,
+    },
+  })
 });
 </script>
 

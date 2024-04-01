@@ -91,10 +91,10 @@ function captureImage() {
   image = imageDataUrl;
   const stream = player.value.srcObject;
   const tracks = stream.getTracks();
-  tracks.forEach((track) => {
-    track.stop();
-  });
-  apicall(imageDataUrl);
+  // tracks.forEach((track) => {
+  //   track.stop();
+  // });
+  // apicall(imageDataUrl);
   authToFacia();
   // console.log(imageDataUrl);
 }
@@ -107,13 +107,10 @@ async function authToFacia() {
   data.append("client_id", config.public.clientId);
   data.append("client_secret", config.public.clientSecret);
 
-  const response = await fetch(
-    "https://app.facia.ai/backend/api/transaction/get-access-token/",
-    {
-      method: "POST",
-      body: data,
-    }
-  );
+  const response = await fetch("https://app.facia.ai/backend/api/transaction/get-access-token", {
+    method: "POST",
+    body: data,
+  });
   const result = await response.json();
   console.log(result);
   createTransactionFacia(result.result.data.token);
