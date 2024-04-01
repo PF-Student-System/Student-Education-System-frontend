@@ -20,7 +20,8 @@ export default function screenshot () {
         const canvas = await html2canvas(document.documentElement, visibleArea);
         const imageUrl = canvas.toDataURL();
         frames.push(imageUrl);
-        console.log('Screenshot taken', frames);
+        // console.log('Screenshot taken', frames);
+        
     }
     
     function stopCaptureScreenshot() {

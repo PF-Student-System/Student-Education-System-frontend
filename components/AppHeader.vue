@@ -13,7 +13,7 @@
             <i class="fas fa-bars text-white text-2xl"></i>
           </label>
           <div class="flex items-center">
-            <span class="text-white ml-2 px-5">John Doe</span>
+            <span class="text-white ml-2 px-3">John Doe</span>
             <div @click="togglemouse" class="flex">
               <img
                 src="/assets/images/user.png"
